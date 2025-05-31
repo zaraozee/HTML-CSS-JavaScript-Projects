@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Unit Converter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Time Unit Converter</h1>
+        <div class="converter-box">
+            <label for="seconds">Enter seconds:</label>
+            <input type="number" id="seconds" placeholder="e.g. 100000" min="0">
+            <button id="convert-btn">Convert</button>
+            <div class="result" id="result">
+                <div class="time-unit">
+                    <span class="value" id="days">0</span>
+                    <span class="label">Days</span>
+                </div>
+                <div class="time-unit">
+                    <span class="value" id="hours">0</span>
+                    <span class="label">Hours</span>
+                </div>
+                <div class="time-unit">
+                    <span class="value" id="minutes">0</span>
+                    <span class="label">Minutes</span>
+                </div>
+                <div class="time-unit">
+                    <span class="value" id="remaining-seconds">0</span>
+                    <span class="label">Seconds</span>
+                </div>
+            </div>
+            <p class="error" id="error"></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

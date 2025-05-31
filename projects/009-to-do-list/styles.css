@@ -1,0 +1,99 @@
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #FFDE7D, #FF8E7D);
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+}
+
+.form {
+    position: absolute;
+    top: 30%;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    width: 420px;
+    background: #FFF6E0;
+    border-radius: 15px;
+    padding: 15px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.form:hover {
+    transform: scale(1.03);
+}
+
+.input {
+    outline: none;
+    width: 100%;
+    padding: 15px;
+    border-radius: 15px;
+    border: none;
+    box-sizing: border-box;
+    font-size: 18px;
+    font-family: cursive;
+    box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+.input::placeholder {
+    color: #999;
+}
+
+.list {
+    padding: 0;
+    margin: 0;
+}
+
+.list li {
+    list-style-type: none;
+    padding: 15px;
+    font-family: cursive;
+    border-top: 2px dashed #ccc;
+    position: relative;
+    background: rgba(255, 226, 226, 0.7);
+    border-radius: 10px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.list li:hover {
+    background: rgba(255, 176, 176, 0.9);
+    transform: translateY(-3px);
+}
+
+.list li .fa-trash {
+    color: #ff5d5d;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.list li .fa-trash:hover {
+    color: #cc0000;
+}
+
+.list li .fa-check-square {
+    color: #4caf50;
+    position: absolute;
+    right: 45px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.list li .fa-check-square:hover {
+    color: #2e7d32;
+}
+
+.list li.checked {
+    color: #888;
+    text-decoration: line-through;
+    background: rgba(200, 200, 200, 0.5);
+}
+
+.list li.checked .fa-check-square {
+    color: #888;
+}

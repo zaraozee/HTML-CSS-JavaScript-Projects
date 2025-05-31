@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Convert distances between centimeters, meters, and kilometers">
+  <link rel="stylesheet" href="styles.css">
+  <title>Distance Converter (cm to km, m, cm)</title>
+</head>
+<body>
+  <main class="container">
+    <h1>Distance Converter</h1>
+    <p class="subtitle">Convert centimeters to kilometers, meters, and centimeters</p>
+    
+    <form id="converter-form" class="converter-form">
+      <div class="form-group">
+        <label for="distance-cm">Enter distance in centimeters:</label>
+        <input 
+          type="number" 
+          id="distance-cm" 
+          placeholder="e.g. 125000" 
+          min="0"
+          step="1"
+          required
+        >
+      </div>
+      <button type="submit" class="convert-btn">Convert</button>
+    </form>
+    
+    <div id="result" class="result" aria-live="polite"></div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

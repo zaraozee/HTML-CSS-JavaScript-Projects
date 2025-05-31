@@ -1,0 +1,163 @@
+:root {
+    --primary: #4CAF50;
+    --secondary: #FF6F61;
+    --dark: #282C34;
+    --light: #F5F5F5;
+    --gray: #444;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--dark);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+    padding: 40px 20px;
+}
+
+.progress-container {
+    width: 100%;
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    margin-bottom: 60px;
+}
+
+.progress-bar-back {
+    position: absolute;
+    height: 6px;
+    width: 100%;
+    background-color: var(--gray);
+    border: none;
+    z-index: -1;
+    margin: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 5px;
+}
+
+.progress-bar-front {
+    position: absolute;
+    height: 6px;
+    width: 0%;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    border: none;
+    z-index: -1;
+    margin: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: 0.4s ease width;
+    border-radius: 5px;
+}
+
+.step {
+    width: 40px;
+    height: 40px;
+    background-color: var(--light);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 4px solid var(--gray);
+    color: var(--gray);
+    position: relative;
+    transition: all 0.4s ease;
+    font-weight: bold;
+}
+
+.step.checked {
+    color: white;
+    background-color: var(--primary);
+    border-color: var(--primary);
+    transform: scale(1.1);
+}
+
+.step.checked small {
+    position: absolute;
+    bottom: -30px;
+    font-family: 'Poppins', sans-serif;
+    color: var(--light);
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.btn {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border: none;
+    color: white;
+    padding: 12px 25px;
+    margin: 0 15px;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn i {
+    margin: 0 5px;
+    font-size: 14px;
+}
+
+.btn:disabled {
+    background: #CCC;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+@media (max-width: 600px) {
+    .progress-container {
+        width: 90vw;
+    }
+    
+    .step {
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+    }
+    
+    .step.checked small {
+        font-size: 12px;
+        bottom: -25px;
+    }
+    
+    .btn {
+        padding: 10px 20px;
+        font-size: 14px;
+        margin: 0 10px;
+    }
+}

@@ -1,0 +1,126 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #4b6cb7, #182848);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    color: #fff;
+}
+
+.container {
+    width: 100%;
+    max-width: 450px;
+    padding: 2rem;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.calculator {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+input {
+    width: 100% ;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.8);
+
+}
+
+button {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-bottom: 1.5rem;
+}
+
+button:hover {
+    background-color: #ff5252;
+    transform: translateY(-2px);
+}
+
+.result {
+    text-align: center;
+}
+
+.bmi-value {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.bmi-value span:first-child {
+    margin-right: 0.5rem;
+}
+
+.bmi-value span:last-child {
+    font-weight: bold;
+}
+
+.bmi-category {
+    margin-top: 1.5rem;
+}
+
+#category {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.bmi-scale {
+    height: 10px;
+    background: linear-gradient(to right, 
+        #4CAF50 0%, 
+        #8BC34A 16.66%, 
+        #CDDC39 33.33%, 
+        #FFC107 50%, 
+        #FF9800 66.66%, 
+        #FF5722 83.33%, 
+        #F44336 100%);
+    border-radius: 5px;
+    position: relative;
+    margin-top: 1rem;
+}
+
+.scale-indicator {
+    position: absolute;
+    top: -5px;
+    width: 10px;
+    height: 20px;
+    background-color: #fff;
+    border-radius: 3px;
+    transform: translateX(-50%);
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    transition: left 0.5s ease;
+}

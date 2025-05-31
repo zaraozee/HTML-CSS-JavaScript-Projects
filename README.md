@@ -1,1 +1,1 @@
-# JavaScript_Project
+# HTML-CSS-JavaScript-Projects
