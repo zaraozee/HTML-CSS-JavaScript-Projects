@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coin Flip Simulator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="coin-container">
+        <h1>Coin Flip Simulator</h1>
+        
+        <div class="coin" id="coin">
+            <div class="heads">
+                <i class="fas fa-dollar-sign"></i>
+            </div>
+            <div class="tails">
+                <i class="fas fa-question"></i>
+            </div>
+        </div>
+        
+        <button id="flip-btn">Flip Coin</button>
+        
+        <div class="stats">
+            <div class="stat">
+                <span class="label">Heads:</span>
+                <span class="value" id="heads-count">0</span>
+            </div>
+            <div class="stat">
+                <span class="label">Tails:</span>
+                <span class="value" id="tails-count">0</span>
+            </div>
+        </div>
+        
+        <div class="result" id="result">Click "Flip Coin" to start!</div>
+    </div>
+
+    <audio id="flip-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-coin-flip-1940.mp3"></audio>
+    <audio id="win-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-winning-chimes-2015.mp3"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
