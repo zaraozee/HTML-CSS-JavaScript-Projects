@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="calculator-container">
+        <h1>Binary Calculator</h1>
+        
+        <div class="converter-section">
+            <div class="input-group">
+                <label for="input-value">Input Value:</label>
+                <input type="text" id="input-value" placeholder="Enter number">
+            </div>
+            
+            <div class="input-group">
+                <label for="input-base">From Base:</label>
+                <select id="input-base">
+                    <option value="2">Binary (2)</option>
+                    <option value="10" selected>Decimal (10)</option>
+                    <option value="16">Hexadecimal (16)</option>
+                </select>
+            </div>
+            
+            <div class="result-group">
+                <div class="result">
+                    <label>Binary:</label>
+                    <span id="binary-result">0</span>
+                </div>
+                <div class="result">
+                    <label>Decimal:</label>
+                    <span id="decimal-result">0</span>
+                </div>
+                <div class="result">
+                    <label>Hexadecimal:</label>
+                    <span id="hex-result">0</span>
+                </div>
+            </div>
+            
+            <button id="convert-btn">Convert</button>
+        </div>
+        
+        <div class="binary-operations">
+            <h2>Binary Operations</h2>
+            <div class="operation-inputs">
+                <div class="input-group">
+                    <label for="binary1">Binary 1:</label>
+                    <input type="text" id="binary1" placeholder="e.g. 1010">
+                </div>
+                <div class="input-group">
+                    <label for="binary2">Binary 2:</label>
+                    <input type="text" id="binary2" placeholder="e.g. 1101">
+                </div>
+            </div>
+            
+            <div class="operation-buttons">
+                <button data-operation="add"><i class="fas fa-plus"></i> Add</button>
+                <button data-operation="subtract"><i class="fas fa-minus"></i> Subtract</button>
+                <button data-operation="multiply"><i class="fas fa-times"></i> Multiply</button>
+                <button data-operation="divide"><i class="fas fa-divide"></i> Divide</button>
+                <button data-operation="and"><i class="fas fa-and"></i> AND</button>
+                <button data-operation="or"><i class="fas fa-or"></i> OR</button>
+                <button data-operation="xor"><i class="fas fa-xor"></i> XOR</button>
+                <button data-operation="not1"><i class="fas fa-not"></i> NOT Binary 1</button>
+            </div>
+            
+            <div class="operation-result">
+                <label>Result:</label>
+                <div class="result-display" id="operation-result">0</div>
+                <div class="result-details">
+                    <span>Binary: <span id="op-binary">0</span></span>
+                    <span>Decimal: <span id="op-decimal">0</span></span>
+                    <span>Hex: <span id="op-hex">0</span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

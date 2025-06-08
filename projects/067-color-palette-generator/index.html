@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Palette Generator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Color Palette Generator</h1>
+    <div class="controls">
+      <button id="generate-btn">Generate Palette</button>
+      <input type="color" id="base-color" value="#5a67d8">
+      <label for="scheme">Select Scheme:</label>
+      <select id="scheme">
+        <option value="monochromatic">Monochromatic</option>
+        <option value="analogous">Analogous</option>
+        <option value="complementary">Complementary</option>
+        <option value="triadic">Triadic</option>
+        <option value="tetradic">Tetradic</option>
+      </select>
+    </div>
+    <div class="palette" id="palette"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
