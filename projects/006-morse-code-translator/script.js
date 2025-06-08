@@ -1,4 +1,3 @@
-// Morse Code Dictionary
 const morseCode = {
     'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 
     'F': '..-.', 'G': '--.', 'H': '....', 'I': '..', 'J': '.---', 
@@ -13,13 +12,11 @@ const morseCode = {
     '_': '..--.-', '"': '.-..-.', '$': '...-..-', '@': '.--.-.', ' ': '/'
 };
 
-// Reverse dictionary for Morse to text
 const reverseMorseCode = {};
 for (const key in morseCode) {
     reverseMorseCode[morseCode[key]] = key;
 }
 
-// DOM Elements
 const inputField = document.getElementById('input');
 const outputField = document.getElementById('output');
 const translateBtn = document.getElementById('translate');
@@ -28,17 +25,14 @@ const clearBtn = document.getElementById('clear');
 const directionIndicator = document.getElementById('direction');
 const cheatsheet = document.getElementById('cheatsheet');
 
-// State
-let translateDirection = 'textToMorse'; // or 'morseToText'
+let translateDirection = 'textToMorse'; 
 
-// Initialize
 function init() {
     generateCheatsheet();
     setupEventListeners();
     updateDirectionIndicator();
 }
 
-// Generate cheatsheet
 function generateCheatsheet() {
     const popularCharacters = {
         'A': '.-', 'B': '-...', 'C': '-.-.', 'E': '.', 'F': '..-.',
@@ -55,7 +49,6 @@ function generateCheatsheet() {
     }
 }
 
-// Event Listeners
 function setupEventListeners() {
     translateBtn.addEventListener('click', translate);
     swapBtn.addEventListener('click', swapDirection);
@@ -63,7 +56,6 @@ function setupEventListeners() {
     inputField.addEventListener('input', handleInput);
 }
 
-// Translation functions
 function translate() {
     const inputText = inputField.value.trim();
     
@@ -109,7 +101,6 @@ function morseToText(morse) {
     }).join(' ').toLowerCase();
 }
 
-// UI Functions
 function swapDirection() {
     translateDirection = translateDirection === 'textToMorse' ? 'morseToText' : 'textToMorse';
     updateDirectionIndicator();
@@ -138,7 +129,6 @@ function showError(message) {
 
 function handleInput() {
     if (translateDirection === 'morseToText') {
-        // Auto-translate as user types in Morse mode
         const inputText = inputField.value.trim();
         if (inputText && (inputText.endsWith(' ') || inputText.endsWith('/'))) {
             translate();
@@ -146,5 +136,4 @@ function handleInput() {
     }
 }
 
-// Initialize the app
 init();

@@ -7,11 +7,9 @@ document.addEventListener('DOMContentLoaded', function() {
     let is24HourFormat = true;
     let isDarkMode = false;
     
-    // Update waktu setiap detik
     function updateTime() {
         const now = new Date();
-        
-        // Format waktu
+
         let hours = now.getHours();
         const minutes = now.getMinutes().toString().padStart(2, '0');
         const seconds = now.getSeconds().toString().padStart(2, '0');
@@ -22,13 +20,11 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             const ampm = hours >= 12 ? 'PM' : 'AM';
             hours = hours % 12;
-            hours = hours ? hours : 12; // jam 0 menjadi 12
+            hours = hours ? hours : 12; 
             timeString = `${hours}:${minutes}:${seconds} ${ampm}`;
         }
         
         timeElement.textContent = timeString;
-        
-        // Format tanggal
         const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
         const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
         
@@ -39,8 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         dateElement.textContent = `${dayName}, ${date} ${monthName} ${year}`;
     }
-    
-    // Toggle format 12/24 jam
+
     toggleFormatBtn.addEventListener('click', function() {
         is24HourFormat = !is24HourFormat;
         this.innerHTML = is24HourFormat ? 
@@ -48,8 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
             '<i class="fas fa-exchange-alt"></i> 24 Jam';
         updateTime();
     });
-    
-    // Toggle dark mode
+
     toggleThemeBtn.addEventListener('click', function() {
         isDarkMode = !isDarkMode;
         document.body.classList.toggle('dark-mode', isDarkMode);
@@ -57,8 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
             '<i class="fas fa-sun"></i> Mode Terang' : 
             '<i class="fas fa-moon"></i> Mode Gelap';
     });
-    
-    // Jalankan updateTime setiap detik
+
     updateTime();
     setInterval(updateTime, 1000);
 });

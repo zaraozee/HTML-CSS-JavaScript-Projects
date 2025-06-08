@@ -11,7 +11,6 @@ function konversiSuhu() {
 
   let hasil;
 
-  // Konversi suhu ke Celsius dulu sebagai titik tengah
   let suhuC;
   switch (dari) {
     case 'celsius': 
@@ -25,7 +24,6 @@ function konversiSuhu() {
       break;
   }
 
-  // Dari Celsius ke satuan tujuan
   switch (ke) {
     case 'celsius': 
       hasil = suhuC; 
@@ -57,7 +55,6 @@ function getSimbol(satuan) {
   }
 }
 
-// Add event listener for Enter key
 document.getElementById('inputValue').addEventListener('keypress', function(e) {
   if (e.key === 'Enter') {
     konversiSuhu();

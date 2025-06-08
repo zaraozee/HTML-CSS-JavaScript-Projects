@@ -58,7 +58,6 @@ function updateTimer() {
 }
 
 function initGame() {
-    // Double the symbols for pairs
     cards = [...symbols, ...symbols];
     shuffle(cards);
     gameElement.innerHTML = '';

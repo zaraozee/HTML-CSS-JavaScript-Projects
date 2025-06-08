@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const mouth = document.querySelector('.mouth');
     const eyes = document.querySelectorAll('.eye');
 
-    // Character states
     const states = {
         current: 'happy',
         happy: {
@@ -40,7 +39,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
-    // Event listeners
     danceBtn.addEventListener('click', function() {
         setState('dancing');
     });
@@ -53,7 +51,6 @@ document.addEventListener('DOMContentLoaded', function() {
         setState('happy');
     });
 
-    // Mouse follow effect for eyes
     document.addEventListener('mousemove', function(e) {
         if (states.current !== 'dancing' && states.current !== 'jumping') {
             const x = e.clientX;
@@ -71,7 +68,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Click interaction
     character.addEventListener('click', function() {
         if (states.current === 'happy') {
             setState('sad');
@@ -80,15 +76,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Set character state
     function setState(state) {
-        // Reset all animations and classes
         character.className = 'character';
         character.classList.add(states[state].class);
         states.current = state;
         moodDisplay.textContent = states[state].mood;
-        
-        // Set arm and leg positions
+
         setArmPosition(states[state].armPosition);
         setLegPosition(states[state].legPosition);
     }

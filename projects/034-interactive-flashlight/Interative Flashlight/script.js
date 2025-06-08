@@ -3,11 +3,9 @@
     const lightBeam = document.getElementById('light-beam');
     let isOn = false;
 
-    // Toggle flashlight function
     function toggleFlashlight() {
         isOn = !isOn;
-        
-        // Update ARIA attribute
+
         powerButton.setAttribute('aria-pressed', isOn);
         
         if (isOn) {
@@ -19,13 +17,11 @@
         }
     }
 
-    // Button click event
     powerButton.addEventListener('click', function(e) {
         e.preventDefault();
         toggleFlashlight();
     });
 
-    // Keyboard event
     document.addEventListener('keydown', (e) => {
         if (e.code === 'Space') {
             e.preventDefault();
@@ -33,7 +29,6 @@
         }
     });
 
-    // Add keyboard focus to button when tabbed to
     powerButton.addEventListener('keydown', (e) => {
         if (e.code === 'Enter' || e.code === 'Space') {
             e.preventDefault();

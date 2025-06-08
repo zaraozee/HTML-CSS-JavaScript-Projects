@@ -83,5 +83,4 @@ function restartGame() {
   createBoard();
 }
 
-// Inisialisasi
 createBoard();

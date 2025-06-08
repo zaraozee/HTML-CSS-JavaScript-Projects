@@ -1,4 +1,4 @@
-// Configuration
+
 const config = {
     cards: [
         {
@@ -20,28 +20,24 @@ const config = {
     ]
 };
 
-// Initialize placeholders
 document.addEventListener('DOMContentLoaded', () => {
     const cards = document.querySelectorAll('.card');
     
     cards.forEach((card, index) => {
         const delay = parseInt(card.dataset.loadDelay) || 2000;
-        
-        // Set unique IDs for all placeholder elements
+
         const placeholders = card.querySelectorAll('[id]');
         placeholders.forEach(el => {
             el.id = `${el.id}_${index}`;
         });
         
-        // Load data after delay
         setTimeout(() => loadCardData(card, index), delay);
     });
 });
 
 function loadCardData(card, index) {
     const data = config.cards[index] || config.cards[0];
-    
-    // Update card content
+
     const header = card.querySelector('.card-header');
     const title = card.querySelector('.card-title');
     const excerpt = card.querySelector('.card-excerpt');
@@ -49,7 +45,6 @@ function loadCardData(card, index) {
     const name = card.querySelector('.author-info strong');
     const date = card.querySelector('.author-info small');
     
-    // Create elements
     const headerImg = document.createElement('img');
     headerImg.src = data.headerImg;
     headerImg.alt = '';
@@ -57,8 +52,7 @@ function loadCardData(card, index) {
     const profileImgEl = document.createElement('img');
     profileImgEl.src = data.profileImg;
     profileImgEl.alt = '';
-    
-    // Replace placeholders with actual content
+
     header.innerHTML = '';
     header.appendChild(headerImg);
     
@@ -70,18 +64,15 @@ function loadCardData(card, index) {
     
     name.textContent = data.name;
     date.textContent = data.date;
-    
-    // Remove placeholder classes
+
     const placeholders = card.querySelectorAll('.placeholder');
     placeholders.forEach(el => {
         el.classList.remove('placeholder', 'placeholder-text');
     });
-    
-    // Add fade-in animation
+
     card.style.animation = 'fadeIn 0.5s ease-out';
 }
 
-// Add fadeIn animation to CSS
 const style = document.createElement('style');
 style.textContent = `
     @keyframes fadeIn {

@@ -1,4 +1,4 @@
-// Data produk
+
 const produkData = [
     { id: 1, nama: "Buku Tulis", harga: 5000 },
     { id: 2, nama: "Pensil", harga: 2000 },
@@ -10,17 +10,14 @@ const produkData = [
     { id: 8, nama: "Map Plastik", harga: 2000 },
 ];
 
-// Variabel keranjang belanja
 let cart = [];
 
-// DOM Elements
 const produkListEl = document.querySelector('.produk-list');
 const cartItemsEl = document.getElementById('cart-items');
 const totalAmountEl = document.getElementById('total-amount');
 const resetBtn = document.getElementById('reset-btn');
 const bayarBtn = document.getElementById('bayar-btn');
 
-// Render daftar produk
 function renderProdukList() {
     produkListEl.innerHTML = '';
     
@@ -37,7 +34,6 @@ function renderProdukList() {
     });
 }
 
-// Tambah produk ke keranjang
 function addToCart(produk) {
     const existingItem = cart.find(item => item.id === produk.id);
     
@@ -55,7 +51,6 @@ function addToCart(produk) {
     renderCart();
 }
 
-// Render keranjang belanja
 function renderCart() {
     cartItemsEl.innerHTML = '';
     
@@ -90,8 +85,7 @@ function renderCart() {
     });
     
     totalAmountEl.textContent = `Rp ${total.toLocaleString()}`;
-    
-    // Tambahkan event listener untuk tombol + dan -
+
     document.querySelectorAll('.qty-btn.minus').forEach(btn => {
         btn.addEventListener('click', (e) => {
             const id = parseInt(e.target.getAttribute('data-id'));
@@ -106,7 +100,6 @@ function renderCart() {
         });
     });
     
-    // Tambahkan event listener untuk tombol hapus
     document.querySelectorAll('.delete-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
             const id = parseInt(e.target.getAttribute('data-id'));
@@ -115,7 +108,6 @@ function renderCart() {
     });
 }
 
-// Update jumlah produk
 function updateQty(id, change) {
     const item = cart.find(item => item.id === id);
     
@@ -130,19 +122,16 @@ function updateQty(id, change) {
     renderCart();
 }
 
-// Hapus produk dari keranjang
 function removeFromCart(id) {
     cart = cart.filter(item => item.id !== id);
     renderCart();
 }
 
-// Reset transaksi
 function resetTransaction() {
     cart = [];
     renderCart();
 }
 
-// Bayar
 function bayar() {
     if (cart.length === 0) {
         alert('Keranjang belanja kosong!');
@@ -154,10 +143,8 @@ function bayar() {
     resetTransaction();
 }
 
-// Event Listeners
 resetBtn.addEventListener('click', resetTransaction);
 bayarBtn.addEventListener('click', bayar);
 
-// Inisialisasi
 renderProdukList();
 renderCart();

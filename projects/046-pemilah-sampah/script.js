@@ -7,8 +7,7 @@ const kategoriSampah = {
 function pilahSampah() {
   const input = document.getElementById("sampahInput").value.toLowerCase().trim();
   const hasilDiv = document.getElementById("hasil");
-  
-  // Reset result div
+
   hasilDiv.className = "result";
   
   if (!input) {
@@ -69,7 +68,6 @@ function pilahSampah() {
   }
 }
 
-// Add event listener for Enter key
 document.getElementById("sampahInput").addEventListener("keypress", function(e) {
   if (e.key === "Enter") {
     pilahSampah();

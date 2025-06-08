@@ -2,8 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const tambahPelajaranBtn = document.getElementById('tambah-pelajaran');
     const mataPelajaranContainer = document.getElementById('mata-pelajaran-container');
     const hitungRapotBtn = document.getElementById('hitung-rapot');
-    
-    // Tambah mata pelajaran
+
     tambahPelajaranBtn.addEventListener('click', function() {
         const pelajaranDiv = document.createElement('div');
         pelajaranDiv.className = 'mata-pelajaran';
@@ -13,14 +12,12 @@ document.addEventListener('DOMContentLoaded', function() {
             <button class="hapus-pelajaran"><i class="fas fa-trash"></i></button>
         `;
         mataPelajaranContainer.appendChild(pelajaranDiv);
-        
-        // Tambah event listener untuk tombol hapus
+
         pelajaranDiv.querySelector('.hapus-pelajaran').addEventListener('click', function() {
             mataPelajaranContainer.removeChild(pelajaranDiv);
         });
     });
-    
-    // Hitung rapot
+
     hitungRapotBtn.addEventListener('click', function() {
         const namaSiswa = document.getElementById('nama-siswa').value;
         const kelas = document.getElementById('kelas').value;
@@ -59,8 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const rataRata = totalNilai / nilaiData.length;
         const predikat = getPredikat(rataRata);
-        
-        // Update output
+
         document.getElementById('output-nama').textContent = `Nama: ${namaSiswa}`;
         document.getElementById('output-kelas').textContent = `Kelas: ${kelas}`;
         document.getElementById('output-semester').textContent = `Semester: ${semester}`;

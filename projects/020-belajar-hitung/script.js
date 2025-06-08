@@ -49,7 +49,6 @@ function visualizeProblem(num1, num2, op) {
   visualization.innerHTML = "";
   
   if (op === "+") {
-    // Show two groups of items being added
     for (let i = 0; i < num1; i++) {
       addImage(images[i % images.length], "group1");
     }
@@ -65,7 +64,6 @@ function visualizeProblem(num1, num2, op) {
     }
   } 
   else if (op === "-") {
-    // Show initial group with some items crossed out
     const total = num1;
     const toRemove = num2;
     
@@ -78,7 +76,6 @@ function visualizeProblem(num1, num2, op) {
     }
   } 
   else if (op === "×") {
-    // Show groups of items (multiplication as repeated addition)
     for (let group = 0; group < num1; group++) {
       for (let i = 0; i < num2; i++) {
         addImage(images[i % images.length], `group${group}`);
@@ -130,5 +127,4 @@ answerInput.addEventListener('keypress', (e) => {
   }
 });
 
-// Generate first problem
 generateProblem();

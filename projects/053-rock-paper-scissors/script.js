@@ -17,8 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     let playerScore = 0;
     let computerScore = 0;
-    
-    // Event listeners for choice buttons
+
     document.getElementById('rock').addEventListener('click', () => playRound('rock'));
     document.getElementById('paper').addEventListener('click', () => playRound('paper'));
     document.getElementById('scissors').addEventListener('click', () => playRound('scissors'));
@@ -28,12 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function playRound(playerChoice) {
         const computerChoice = getComputerChoice();
         const result = getResult(playerChoice, computerChoice);
-        
-        // Update selections display
+
         playerSelectionDisplay.textContent = emojis[playerChoice];
         computerSelectionDisplay.textContent = emojis[computerChoice];
-        
-        // Update result and scores
+
         resultDisplay.textContent = result;
         
         if (result.includes('Win')) {

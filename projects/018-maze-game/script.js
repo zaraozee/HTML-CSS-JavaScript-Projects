@@ -1,4 +1,3 @@
-// Game configuration
 const config = {
     cellSize: 30,
     levels: [
@@ -39,7 +38,6 @@ const config = {
     ]
 };
 
-// Game state
 let currentLevel = 0;
 let playerPos = { x: 0, y: 0 };
 let exitPos = { x: 0, y: 0 };
@@ -48,7 +46,6 @@ let timeLeft = 60;
 let timer;
 let gameActive = false;
 
-// DOM elements
 const mazeElement = document.getElementById('maze');
 const levelElement = document.getElementById('level');
 const timeElement = document.getElementById('time');
@@ -56,13 +53,11 @@ const movesElement = document.getElementById('moves');
 const messageElement = document.getElementById('message');
 const resetBtn = document.getElementById('reset-btn');
 
-// Initialize the game
 function initGame() {
     currentLevel = 0;
     loadLevel(currentLevel);
 }
 
-// Load a level
 function loadLevel(levelIndex) {
     if (levelIndex >= config.levels.length) {
         showMessage("Congratulations! You beat all levels!");
@@ -73,7 +68,6 @@ function loadLevel(levelIndex) {
     const rows = level.length;
     const cols = level[0].length;
 
-    // Set CSS variables for grid sizing
     mazeElement.style.setProperty('--rows', rows);
     mazeElement.style.setProperty('--cols', cols);
     
@@ -83,10 +77,8 @@ function loadLevel(levelIndex) {
     levelElement.textContent = levelIndex + 1;
     messageElement.textContent = '';
     
-    // Reset timer
     resetTimer();
     
-    // Create maze grid
     for (let y = 0; y < rows; y++) {
         for (let x = 0; x < cols; x++) {
             const cell = document.createElement('div');
@@ -118,7 +110,6 @@ function loadLevel(levelIndex) {
     gameActive = true;
 }
 
-// Move player
 function movePlayer(dx, dy) {
     if (!gameActive) return;
     
@@ -126,7 +117,6 @@ function movePlayer(dx, dy) {
     const newX = playerPos.x + dx;
     const newY = playerPos.y + dy;
     
-    // Check boundaries and walls
     if (newX < 0 || newY < 0 || newY >= level.length || newX >= level[0].length) {
         return;
     }
@@ -135,14 +125,11 @@ function movePlayer(dx, dy) {
         return;
     }
     
-    // Update player position
     const oldIndex = playerPos.y * level[0].length + playerPos.x;
     const newIndex = newY * level[0].length + newX;
     
-    // Clear old position
     mazeElement.children[oldIndex].innerHTML = '';
     
-    // Set new position
     const player = document.createElement('div');
     player.className = 'player';
     mazeElement.children[newIndex].appendChild(player);
@@ -151,13 +138,11 @@ function movePlayer(dx, dy) {
     moves++;
     movesElement.textContent = moves;
     
-    // Check if player reached exit
     if (newX === exitPos.x && newY === exitPos.y) {
         levelComplete();
     }
 }
 
-// Handle level completion
 function levelComplete() {
     gameActive = false;
     clearInterval(timer);
@@ -169,7 +154,6 @@ function levelComplete() {
     }, 1500);
 }
 
-// Timer functions
 function startTimer() {
     clearInterval(timer);
     timeLeft = 60;
@@ -192,12 +176,10 @@ function resetTimer() {
     startTimer();
 }
 
-// Show message
 function showMessage(msg) {
     messageElement.textContent = msg;
 }
 
-// Event listeners
 document.addEventListener('keydown', (e) => {
     if (!gameActive) return;
     
@@ -229,5 +211,4 @@ resetBtn.addEventListener('click', () => {
     loadLevel(currentLevel);
 });
 
-// Start the game when page loads
 window.addEventListener('load', initGame);

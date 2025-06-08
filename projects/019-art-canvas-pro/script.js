@@ -1,8 +1,7 @@
-// Canvas setup
+
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
-// Elements
 const increaseBtn = document.getElementById('increase');
 const decreaseBtn = document.getElementById('decrease');
 const sizeEl = document.getElementById('size');
@@ -13,39 +12,31 @@ const eraserBtn = document.getElementById('eraser-btn');
 const saveBtn = document.getElementById('save-btn');
 const loadBtn = document.getElementById('load-btn');
 
-// State variables
 let size = 10;
 let isPressed = false;
 let color = colorEl.value;
 let currentTool = 'brush';
 let x, y;
 
-// Set canvas size to match container
 function resizeCanvas() {
     const container = document.querySelector('.canvas-container');
     canvas.width = container.clientWidth - 40;
     canvas.height = container.clientHeight - 40;
-    
-    // Redraw canvas content if needed
-    // (You might want to implement a way to preserve drawings on resize)
+       
 }
 
-// Initialize canvas
 resizeCanvas();
 window.addEventListener('resize', resizeCanvas);
 
-// Event Listeners
 canvas.addEventListener('mousedown', startDrawing);
 canvas.addEventListener('mouseup', stopDrawing);
 canvas.addEventListener('mousemove', draw);
 canvas.addEventListener('mouseout', stopDrawing);
 
-// Touch support for mobile devices
 canvas.addEventListener('touchstart', handleTouchStart);
 canvas.addEventListener('touchend', handleTouchEnd);
 canvas.addEventListener('touchmove', handleTouchMove);
 
-// Button events
 increaseBtn.addEventListener('click', increaseSize);
 decreaseBtn.addEventListener('click', decreaseSize);
 colorEl.addEventListener('change', updateColor);
@@ -55,7 +46,6 @@ eraserBtn.addEventListener('click', () => setTool('eraser'));
 saveBtn.addEventListener('click', saveCanvas);
 loadBtn.addEventListener('click', loadCanvas);
 
-// Color presets
 document.querySelectorAll('.color-preset').forEach(preset => {
     preset.addEventListener('click', function() {
         color = this.style.backgroundColor;
@@ -66,12 +56,10 @@ document.querySelectorAll('.color-preset').forEach(preset => {
     });
 });
 
-// Drawing functions
 function startDrawing(e) {
     isPressed = true;
     [x, y] = getPosition(e);
     
-    // Draw a single dot when just clicking
     drawCircle(x, y);
 }
 
@@ -110,19 +98,15 @@ function drawLine(x1, y1, x2, y2) {
     ctx.stroke();
 }
 
-// Tool functions
 function setTool(tool) {
     currentTool = tool;
-    
-    // Update active button state
+
     brushBtn.classList.toggle('active', tool === 'brush');
     eraserBtn.classList.toggle('active', tool === 'eraser');
-    
-    // Change cursor
+
     canvas.style.cursor = tool === 'eraser' ? 'cell' : 'crosshair';
 }
 
-// Size functions
 function increaseSize() {
     size += 5;
     if (size > 50) size = 50;
@@ -139,7 +123,6 @@ function updateSizeDisplay() {
     sizeEl.textContent = size;
 }
 
-// Color functions
 function updateColor(e) {
     color = e.target.value;
     if (currentTool === 'eraser') {
@@ -147,7 +130,6 @@ function updateColor(e) {
     }
 }
 
-// Canvas functions
 function clearCanvas() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
@@ -183,7 +165,6 @@ function loadCanvas() {
     input.click();
 }
 
-// Helper functions
 function getPosition(e) {
     let posX, posY;
     
@@ -215,7 +196,6 @@ function handleTouchMove(e) {
 }
 
 function rgbToHex(rgb) {
-    // Convert rgb color string to hex
     const match = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
     if (!match) return rgb;
     

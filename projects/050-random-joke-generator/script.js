@@ -12,7 +12,6 @@ let getJoke = () => {
     jokeContainer.classList.add("loading");
     btn.disabled = true;
     
-    // Random emoji
     emoji.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
     
     fetch(url)

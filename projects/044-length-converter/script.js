@@ -8,7 +8,6 @@ document.getElementById("convert-btn").addEventListener("click", function() {
         return;
     }
     
-    // Conversion factors to meters
     const conversionFactors = {
         meters: 1,
         inches: 0.0254,
@@ -19,17 +18,12 @@ document.getElementById("convert-btn").addEventListener("click", function() {
         centimeters: 0.01,
         millimeters: 0.001
     };
-    
-    // Convert to meters first
+
     const valueInMeters = valueInput * conversionFactors[fromUnit];
-    // Then convert to target unit
     const convertedValue = valueInMeters / conversionFactors[toUnit];
-    
-    // Format the result
     const formattedOriginal = `${valueInput} ${fromUnit}`;
     const formattedConverted = `${convertedValue.toFixed(6)} ${toUnit}`;
     
-    // Update the display
     document.getElementById("original-value").textContent = formattedOriginal;
     document.getElementById("converted-value").textContent = formattedConverted;
 });

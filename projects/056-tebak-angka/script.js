@@ -61,5 +61,4 @@ guessInput.addEventListener('keypress', (e) => {
   }
 });
 
-// Start the game
 startNewGame();

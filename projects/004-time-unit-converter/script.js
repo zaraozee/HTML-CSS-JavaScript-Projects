@@ -1,8 +1,7 @@
 document.getElementById("convert-btn").addEventListener("click", function() {
     const secondsInput = document.getElementById("seconds").value;
     const errorEl = document.getElementById("error");
-    
-    // Reset display
+
     errorEl.textContent = "";
     
     const seconds = parseInt(secondsInput);
@@ -28,7 +27,6 @@ document.getElementById("convert-btn").addEventListener("click", function() {
     const minutes = Math.floor(remainingAfterHours / SECONDS_IN_MINUTE);
     const remainingSeconds = remainingAfterHours % SECONDS_IN_MINUTE;
 
-    // Update the UI
     document.getElementById("days").textContent = days;
     document.getElementById("hours").textContent = hours;
     document.getElementById("minutes").textContent = minutes;

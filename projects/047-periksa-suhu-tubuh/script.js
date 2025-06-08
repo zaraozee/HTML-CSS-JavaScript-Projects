@@ -1,8 +1,7 @@
 function cekSuhu() {
   const suhu = parseFloat(document.getElementById('suhu').value);
   const output = document.getElementById('output');
-  
-  // Reset output
+
   output.className = 'result';
   
   if (isNaN(suhu)) {
@@ -47,8 +46,7 @@ function cekSuhu() {
     </div>
   `;
   output.classList.add(statusClass);
-  
-  // Add appropriate icon based on status
+
   let icon;
   if (statusClass === "status-hypothermia") icon = "fa-temperature-low";
   else if (statusClass === "status-normal") icon = "fa-temperature-empty";
@@ -61,7 +59,6 @@ function cekSuhu() {
   output.querySelector('.result-content').prepend(iconElement);
 }
 
-// Add event listener for Enter key
 document.getElementById('suhu').addEventListener('keypress', function(e) {
   if (e.key === 'Enter') {
     cekSuhu();

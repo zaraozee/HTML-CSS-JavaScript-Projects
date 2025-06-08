@@ -236,35 +236,21 @@
 
     <script>
         function hitungGaji() {
-            // Ambil data karyawan
             const nama = document.getElementById("nama").value || "Karyawan";
             const jabatan = document.getElementById("jabatan").value;
             const status = document.getElementById("status").value;
-            
-            // Ambil komponen gaji
             const gajiPokok = parseFloat(document.getElementById("gajiPokok").value) || 0;
             const tunjanganJabatan = parseFloat(document.getElementById("tunjanganJabatan").value) || 0;
             const tunjanganKinerja = parseFloat(document.getElementById("tunjanganKinerja").value) || 0;
             const tunjanganLain = parseFloat(document.getElementById("tunjanganLain").value) || 0;
-            
-            // Ambil potongan
             const bpjsKesehatan = parseFloat(document.getElementById("bpjsKesehatan").value) || 0;
             const bpjsKetenagakerjaan = parseFloat(document.getElementById("bpjsKetenagakerjaan").value) || 0;
             const potonganLain = parseFloat(document.getElementById("potonganLain").value) || 0;
-            
-            // Hitung total penghasilan
             const totalPenghasilan = gajiPokok + tunjanganJabatan + tunjanganKinerja + tunjanganLain;
-            
-            // Hitung total potongan
             const totalPotongan = bpjsKesehatan + bpjsKetenagakerjaan + potonganLain;
-            
-            // Hitung PPH 21 (sederhana)
             const pph21 = hitungPPH21(totalPenghasilan, status);
-            
-            // Hitung gaji bersih
             const gajiBersih = totalPenghasilan - totalPotongan - pph21;
             
-            // Tampilkan hasil
             document.getElementById("namaKaryawan").textContent = nama;
             document.getElementById("infoJabatan").textContent = `Jabatan: ${getJabatanName(jabatan)} | Status: ${getStatusName(status)}`;
             
@@ -285,7 +271,6 @@
             document.getElementById("hasil").style.display = "block";
         }
         
-        // Fungsi menghitung PPH 21 (versi sederhana)
         function hitungPPH21(penghasilan, status) {
             const ptkp = getPTKP(status);
             const pkp = Math.max(0, penghasilan * 12 - ptkp);
@@ -309,24 +294,21 @@
             return pphSetahun / 12;
         }
         
-        // Fungsi mendapatkan PTKP berdasarkan status
         function getPTKP(status) {
             switch(status) {
-                case "tk": return 54000000;  // TK/0
-                case "k0": return 58500000;  // K/0
-                case "k1": return 63000000;  // K/1
-                case "k2": return 67500000;  // K/2
-                case "k3": return 72000000;  // K/3
+                case "tk": return 54000000; 
+                case "k0": return 58500000;  
+                case "k1": return 63000000;  
+                case "k2": return 67500000; 
+                case "k3": return 72000000;  
                 default: return 54000000;
             }
         }
         
-        // Fungsi format rupiah
         function formatRupiah(angka) {
             return "Rp" + angka.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
         }
         
-        // Fungsi konversi kode jabatan ke nama
         function getJabatanName(jabatan) {
             const jabatanMap = {
                 "staff": "Staff",
@@ -337,7 +319,6 @@
             return jabatanMap[jabatan] || "Staff";
         }
         
-        // Fungsi konversi kode status ke nama
         function getStatusName(status) {
             const statusMap = {
                 "tk": "Belum Menikah",

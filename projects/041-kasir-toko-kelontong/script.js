@@ -1,4 +1,3 @@
-// Data produk dengan kategori
 const produkData = [
     { id: 1, nama: "Buku Tulis", harga: 5000, kategori: "Alat Tulis" },
     { id: 2, nama: "Pensil 2B", harga: 2000, kategori: "Alat Tulis" },
@@ -14,11 +13,9 @@ const produkData = [
     { id: 12, nama: "Binder Clip", harga: 8000, kategori: "Peralatan Kantor" },
 ];
 
-// Variabel keranjang belanja
 let cart = [];
 let categories = [];
 
-// DOM Elements
 const produkListEl = document.querySelector('.produk-list');
 const cartItemsEl = document.getElementById('cart-items');
 const totalAmountEl = document.getElementById('total-amount');
@@ -36,15 +33,9 @@ const receiptContent = document.getElementById('receipt-content');
 const printReceiptBtn = document.getElementById('print-receipt-btn');
 const closeBtn = document.querySelector('.close-btn');
 
-// Inisialisasi kategori
 function initCategories() {
-    // Ambil semua kategori unik dari produkData
     categories = [...new Set(produkData.map(produk => produk.kategori))];
-    
-    // Kosongkan select kategori
     categorySelect.innerHTML = '<option value="all">Semua Kategori</option>';
-    
-    // Tambahkan opsi kategori
     categories.forEach(category => {
         const option = document.createElement('option');
         option.value = category;
@@ -53,20 +44,16 @@ function initCategories() {
     });
 }
 
-// Render daftar produk dengan filter
 function renderProdukList(searchTerm = '', category = 'all') {
     produkListEl.innerHTML = '';
     
     let filteredProduk = produkData;
-    
-    // Filter berdasarkan pencarian
     if (searchTerm) {
         filteredProduk = filteredProduk.filter(produk => 
             produk.nama.toLowerCase().includes(searchTerm.toLowerCase())
         );
     }
     
-    // Filter berdasarkan kategori
     if (category !== 'all') {
         filteredProduk = filteredProduk.filter(produk => 
             produk.kategori === category
@@ -92,7 +79,6 @@ function renderProdukList(searchTerm = '', category = 'all') {
     });
 }
 
-// Tambah produk ke keranjang
 function addToCart(produk) {
     const existingItem = cart.find(item => item.id === produk.id);
     
@@ -111,7 +97,6 @@ function addToCart(produk) {
     showNotification(`${produk.nama} ditambahkan ke keranjang`);
 }
 
-// Render keranjang belanja
 function renderCart() {
     cartItemsEl.innerHTML = '';
     
@@ -148,8 +133,7 @@ function renderCart() {
     });
     
     totalAmountEl.textContent = `Rp ${total.toLocaleString()}`;
-    
-    // Tambahkan event listener untuk tombol + dan -
+
     document.querySelectorAll('.qty-btn.minus').forEach(btn => {
         btn.addEventListener('click', (e) => {
             const id = parseInt(e.target.closest('button').getAttribute('data-id'));
@@ -163,8 +147,7 @@ function renderCart() {
             updateQty(id, 1);
         });
     });
-    
-    // Tambahkan event listener untuk tombol hapus
+
     document.querySelectorAll('.delete-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
             const id = parseInt(e.target.closest('button').getAttribute('data-id'));
@@ -173,7 +156,6 @@ function renderCart() {
     });
 }
 
-// Update jumlah produk
 function updateQty(id, change) {
     const item = cart.find(item => item.id === id);
     
@@ -189,7 +171,6 @@ function updateQty(id, change) {
     renderCart();
 }
 
-// Hapus produk dari keranjang
 function removeFromCart(id) {
     const item = cart.find(item => item.id === id);
     cart = cart.filter(item => item.id !== id);
@@ -197,7 +178,6 @@ function removeFromCart(id) {
     showNotification(`${item.nama} dihapus dari keranjang`);
 }
 
-// Hitung kembalian
 function calculateChange() {
     const paymentAmount = parseFloat(paymentAmountInput.value);
     const total = getTotalAmount();
@@ -217,12 +197,10 @@ function calculateChange() {
     changeAmountEl.textContent = `Rp ${change.toLocaleString()}`;
 }
 
-// Dapatkan total belanja
 function getTotalAmount() {
     return cart.reduce((sum, item) => sum + (item.harga * item.qty), 0);
 }
 
-// Reset transaksi
 function resetTransaction() {
     cart = [];
     renderCart();
@@ -230,7 +208,6 @@ function resetTransaction() {
     showNotification("Transaksi direset");
 }
 
-// Bayar
 function bayar() {
     if (cart.length === 0) {
         showNotification('Keranjang belanja kosong!');
@@ -251,16 +228,12 @@ function bayar() {
     }
     
     const change = paymentAmount - total;
-    
-    // Tampilkan struk
+
     generateReceipt(total, paymentAmount, change);
     openReceiptModal();
-    
-    // Reset transaksi setelah bayar
     resetTransaction();
 }
 
-// Generate struk
 function generateReceipt(total, paymentAmount, change) {
     const now = new Date();
     const dateTime = now.toLocaleString();
@@ -287,17 +260,14 @@ function generateReceipt(total, paymentAmount, change) {
     receiptContent.textContent = receiptText;
 }
 
-// Buka modal struk
 function openReceiptModal() {
     receiptModal.style.display = 'block';
 }
 
-// Tutup modal struk
 function closeReceiptModal() {
     receiptModal.style.display = 'none';
 }
 
-// Cetak struk
 function printReceipt() {
     const printContent = receiptContent.textContent;
     const originalContent = document.body.innerHTML;
@@ -308,7 +278,6 @@ function printReceipt() {
     renderCart();
 }
 
-// Tampilkan notifikasi
 function showNotification(message) {
     const notification = document.createElement('div');
     notification.className = 'notification';
@@ -323,7 +292,6 @@ function showNotification(message) {
     }, 3000);
 }
 
-// Event Listeners
 resetBtn.addEventListener('click', resetTransaction);
 bayarBtn.addEventListener('click', bayar);
 printBtn.addEventListener('click', generateReceipt.bind(null, getTotalAmount(), parseFloat(paymentAmountInput.value) || 0, parseFloat(changeAmountEl.textContent.replace('Rp ', '').replace(/\./g, '') || 0)));
@@ -348,19 +316,16 @@ paymentAmountInput.addEventListener('keyup', (e) => {
 closeBtn.addEventListener('click', closeReceiptModal);
 printReceiptBtn.addEventListener('click', printReceipt);
 
-// Tutup modal saat klik di luar modal
 window.addEventListener('click', (e) => {
     if (e.target === receiptModal) {
         closeReceiptModal();
     }
 });
 
-// Inisialisasi
 initCategories();
 renderProdukList();
 renderCart();
 
-// Tambahkan CSS untuk notifikasi
 const notificationStyle = document.createElement('style');
 notificationStyle.textContent = `
     .notification {

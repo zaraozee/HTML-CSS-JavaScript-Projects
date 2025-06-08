@@ -30,10 +30,8 @@ weatherSelect.addEventListener("change", () => {
   const weather = weatherSelect.value;
   const setting = weatherSettings[weather];
 
-  // Update display
   icon.innerHTML = setting.icon;
   description.textContent = setting.text;
-  
-  // Update background
+
   body.className = setting.className;
 });

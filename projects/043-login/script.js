@@ -15,11 +15,9 @@ document.addEventListener('DOMContentLoaded', function() {
             showResult('Username dan password harus diisi', false);
             return;
         }
-        
-        // Contoh validasi sederhana
+
         if (username === 'admin' && password === '1234') {
             showResult('Login berhasil!', true);
-            // Redirect atau lakukan sesuatu setelah login berhasil
             // window.location.href = 'dashboard.html';
         } else {
             showResult('Username atau password salah', false);
@@ -30,7 +28,6 @@ document.addEventListener('DOMContentLoaded', function() {
         hasilElement.textContent = message;
         hasilElement.className = isSuccess ? 'result-message success' : 'result-message';
         
-        // Reset pesan setelah 3 detik
         setTimeout(() => {
             if (hasilElement.textContent === message) {
                 hasilElement.textContent = '';

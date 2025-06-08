@@ -5,19 +5,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const highScoreDisplay = document.getElementById('high-score');
     const startBtn = document.getElementById('start-btn');
     const resetBtn = document.getElementById('reset-btn');
-    
-    // Mobile controls
+
     const upBtn = document.getElementById('up-btn');
     const downBtn = document.getElementById('down-btn');
     const leftBtn = document.getElementById('left-btn');
     const rightBtn = document.getElementById('right-btn');
-    
-    // Game settings
+
     const gridSize = 20;
     const tileCount = canvas.width / gridSize;
     let speed = 7;
-    
-    // Game variables
+
     let snake = [];
     let food = {};
     let direction = 'right';
@@ -26,18 +23,13 @@ document.addEventListener('DOMContentLoaded', function() {
     let highScore = localStorage.getItem('snakeHighScore') || 0;
     let gameRunning = false;
     let gameLoop;
-    
-    // Initialize game
+
     highScoreDisplay.textContent = highScore;
-    
-    // Event listeners
     startBtn.addEventListener('click', startGame);
     resetBtn.addEventListener('click', resetGame);
-    
-    // Keyboard controls
+
     document.addEventListener('keydown', changeDirection);
-    
-    // Mobile controls
+
     upBtn.addEventListener('click', () => changeDirection({ keyCode: 38 }));
     downBtn.addEventListener('click', () => changeDirection({ keyCode: 40 }));
     leftBtn.addEventListener('click', () => changeDirection({ keyCode: 37 }));
@@ -45,26 +37,21 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function startGame() {
         if (gameRunning) return;
-        
-        // Reset game state
+
         snake = [];
         direction = 'right';
         nextDirection = 'right';
         score = 0;
         scoreDisplay.textContent = score;
-        
-        // Create initial snake
+
         for (let i = 3; i >= 0; i--) {
             snake.push({ x: i, y: 0 });
         }
-        
-        // Create first food
+
         createFood();
         
         gameRunning = true;
         startBtn.disabled = true;
-        
-        // Start game loop
         gameLoop = setInterval(gameStep, 1000 / speed);
     }
     
@@ -76,10 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function gameStep() {
-        // Update direction
         direction = nextDirection;
-        
-        // Move snake
         const head = { x: snake[0].x, y: snake[0].y };
         
         switch (direction) {
@@ -96,8 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 head.x++;
                 break;
         }
-        
-        // Check for collisions
+
         if (
             head.x < 0 || head.x >= tileCount || 
             head.y < 0 || head.y >= tileCount ||
@@ -106,11 +89,9 @@ document.addEventListener('DOMContentLoaded', function() {
             gameOver();
             return;
         }
-        
-        // Add new head
+
         snake.unshift(head);
-        
-        // Check if snake ate food
+
         if (head.x === food.x && head.y === food.y) {
             score++;
             scoreDisplay.textContent = score;
@@ -123,19 +104,16 @@ document.addEventListener('DOMContentLoaded', function() {
             
             createFood();
         } else {
-            // Remove tail if no food eaten
+
             snake.pop();
         }
-        
-        // Draw everything
+
         drawGame();
     }
     
     function drawGame() {
-        // Clear canvas
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        // Draw snake
+
         ctx.fillStyle = '#2ecc71';
         snake.forEach(segment => {
             ctx.fillRect(
@@ -144,12 +122,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 gridSize - 1, 
                 gridSize - 1
             );
-            
-            // Add eyes to head
+
             if (segment === snake[0]) {
                 ctx.fillStyle = 'white';
-                
-                // Eye positions based on direction
+
                 let leftEyeX, leftEyeY, rightEyeX, rightEyeY;
                 
                 switch (direction) {
@@ -184,8 +160,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 ctx.fillStyle = '#2ecc71';
             }
         });
-        
-        // Draw food
+
         ctx.fillStyle = '#e74c3c';
         ctx.beginPath();
         ctx.arc(
@@ -203,8 +178,7 @@ document.addEventListener('DOMContentLoaded', function() {
             x: Math.floor(Math.random() * tileCount),
             y: Math.floor(Math.random() * tileCount)
         };
-        
-        // Make sure food doesn't appear on snake
+
         for (let i = 0; i < snake.length; i++) {
             if (food.x === snake[i].x && food.y === snake[i].y) {
                 createFood();
@@ -214,7 +188,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function changeDirection(e) {
-        // Prevent reversing direction
         if (!gameRunning) return;
         
         const key = e.keyCode;
@@ -243,8 +216,7 @@ document.addEventListener('DOMContentLoaded', function() {
         clearInterval(gameLoop);
         gameRunning = false;
         startBtn.disabled = false;
-        
-        // Flash the canvas
+
         let flashCount = 0;
         const flashInterval = setInterval(() => {
             if (flashCount % 2 === 0) {

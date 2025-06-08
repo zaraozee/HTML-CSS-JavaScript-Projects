@@ -1,4 +1,3 @@
-// Data Kuis (Pertanyaan & Jawaban)
 const quizData = [
     {
         question: "Apa ibukota Indonesia?",
@@ -27,14 +26,12 @@ const quizData = [
     }
 ];
 
-// Variabel Game
 let currentQuestion = 0;
 let score = 0;
 let timeLeft = 30;
 let timer;
 let leaderboard = JSON.parse(localStorage.getItem('leaderboard')) || [];
 
-// DOM Elements
 const startScreen = document.getElementById('start-screen');
 const quizContainer = document.getElementById('quiz-container');
 const resultScreen = document.getElementById('result-screen');
@@ -49,7 +46,6 @@ const scoreElement = document.getElementById('score');
 const finalScoreElement = document.getElementById('final-score');
 const leaderboardElement = document.getElementById('leaderboard');
 
-// Start Quiz
 startBtn.addEventListener('click', startQuiz);
 
 function startQuiz() {
@@ -59,7 +55,6 @@ function startQuiz() {
     startTimer();
 }
 
-// Load Question
 function loadQuestion() {
     if (currentQuestion >= quizData.length) {
         endQuiz();
@@ -82,7 +77,6 @@ function loadQuestion() {
     nextBtn.style.display = 'none';
 }
 
-// Check Answer
 function checkAnswer(selectedOption) {
     const quiz = quizData[currentQuestion];
     const options = document.querySelectorAll('.option-btn');
@@ -109,14 +103,12 @@ function checkAnswer(selectedOption) {
     nextBtn.style.display = 'block';
 }
 
-// Next Question
 nextBtn.addEventListener('click', () => {
     currentQuestion++;
     loadQuestion();
     resetTimer();
 });
 
-// Timer
 function startTimer() {
     timer = setInterval(() => {
         timeLeft--;
@@ -137,7 +129,6 @@ function resetTimer() {
     startTimer();
 }
 
-// End Quiz
 function endQuiz() {
     clearInterval(timer);
     quizContainer.style.display = 'none';
@@ -145,12 +136,10 @@ function endQuiz() {
 
     finalScoreElement.textContent = `Skor Akhir: ${score}`;
 
-    // Update Leaderboard
     leaderboard.push(score);
     leaderboard.sort((a, b) => b - a);
     localStorage.setItem('leaderboard', JSON.stringify(leaderboard));
 
-    // Display Leaderboard
     leaderboardElement.innerHTML = '';
     leaderboard.slice(0, 5).forEach((score, index) => {
         const li = document.createElement('li');
@@ -159,7 +148,6 @@ function endQuiz() {
     });
 }
 
-// Restart Quiz
 restartBtn.addEventListener('click', () => {
     currentQuestion = 0;
     score = 0;

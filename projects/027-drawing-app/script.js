@@ -7,28 +7,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const clearBtn = document.getElementById('clear');
     const saveBtn = document.getElementById('save');
     
-    // Set canvas size
     function resizeCanvas() {
         const container = canvas.parentElement;
-        canvas.width = container.offsetWidth - 2; // Subtract border width
+        canvas.width = container.offsetWidth - 2; 
         canvas.height = 500;
     }
     
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
-    
-    // Drawing state
+
     let isDrawing = false;
     let lastX = 0;
     let lastY = 0;
-    
-    // Update brush size display
+
     sizeValue.textContent = brushSize.value;
     brushSize.addEventListener('input', () => {
         sizeValue.textContent = brushSize.value;
     });
     
-    // Drawing functions
     function startDrawing(e) {
         isDrawing = true;
         [lastX, lastY] = getPosition(e);
@@ -70,14 +66,12 @@ document.addEventListener('DOMContentLoaded', () => {
         
         return [x, y];
     }
-    
-    // Event listeners for mouse
+
     canvas.addEventListener('mousedown', startDrawing);
     canvas.addEventListener('mousemove', draw);
     canvas.addEventListener('mouseup', stopDrawing);
     canvas.addEventListener('mouseout', stopDrawing);
-    
-    // Event listeners for touch
+
     canvas.addEventListener('touchstart', (e) => {
         e.preventDefault();
         startDrawing(e);
@@ -89,13 +83,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     canvas.addEventListener('touchend', stopDrawing);
-    
-    // Clear canvas
+
     clearBtn.addEventListener('click', () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
     });
-    
-    // Save image
+
     saveBtn.addEventListener('click', () => {
         const link = document.createElement('a');
         link.download = 'drawing.png';
