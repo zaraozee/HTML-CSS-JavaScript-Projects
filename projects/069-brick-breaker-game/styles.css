@@ -1,0 +1,139 @@
+/* Base Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #1a1a2e;
+  color: #e6e6e6;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Header Styles */
+h1 {
+  margin: 0;
+  padding: 20px 0;
+  font-size: 2.5rem;
+  color: #4cc9f0;
+  text-shadow: 0 0 10px rgba(76, 201, 240, 0.5);
+}
+
+/* Canvas Styles */
+#gameCanvas {
+  background-color: #16213e;
+  border: 3px solid #4cc9f0;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(76, 201, 240, 0.3);
+  display: block;
+  margin: 20px auto;
+  transition: all 0.3s ease;
+}
+
+#gameCanvas:hover {
+  box-shadow: 0 0 30px rgba(76, 201, 240, 0.5);
+}
+
+/* Controls Section */
+.controls {
+  margin: 20px 0;
+  padding: 15px;
+  background-color: rgba(22, 33, 62, 0.7);
+  border-radius: 8px;
+  width: 80%;
+  max-width: 800px;
+}
+
+.controls p {
+  margin: 0 0 15px 0;
+  font-size: 1.1rem;
+  color: #a5a5a5;
+}
+
+/* Brick Styles (ditambahkan di CSS) */
+.brick {
+  border-radius: 4px;
+  box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.2);
+}
+
+/* Button Styles */
+button {
+  background-color: #4cc9f0;
+  color: #1a1a2e;
+  border: none;
+  padding: 12px 25px;
+  margin: 0 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+#startBtn {
+  background-color: #4cc9f0;
+}
+
+#startBtn:hover {
+  background-color: #3aa8d8;
+}
+
+#resetBtn {
+  background-color: #f72585;
+  color: white;
+}
+
+#resetBtn:hover {
+  background-color: #d3166d;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+  
+  #gameCanvas {
+    width: 95%;
+    height: auto;
+  }
+  
+  .controls {
+    width: 95%;
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  .controls {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  button {
+    margin: 5px 0;
+    width: 100%;
+  }
+}
