@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pemilah Sampah</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <div class="waste-container">
+    <h1><i class="fas fa-recycle"></i> Pemilah Sampah</h1>
+    
+    <div class="input-group">
+      <input type="text" id="sampahInput" placeholder="Masukkan jenis sampah (contoh: botol plastik)" />
+      <button onclick="pilahSampah()">
+        <i class="fas fa-trash-alt"></i> Pilah Sampah
+      </button>
+    </div>
+    
+    <div id="hasil" class="result">
+      <div class="placeholder">
+        <i class="fas fa-info-circle"></i> Hasil pemilahan akan muncul di sini
+      </div>
+    </div>
+    
+    <div class="waste-guide">
+      <h2><i class="fas fa-book"></i> Panduan Sampah</h2>
+      <div class="guide-categories">
+        <div class="category organic">
+          <h3><i class="fas fa-leaf"></i> Organik</h3>
+          <p>Contoh: sisa makanan, daun, kulit buah</p>
+        </div>
+        <div class="category anorganic">
+          <h3><i class="fas fa-recycle"></i> Anorganik</h3>
+          <p>Contoh: plastik, kertas, kaleng</p>
+        </div>
+        <div class="category b3">
+          <h3><i class="fas fa-skull-crossbones"></i> B3</h3>
+          <p>Contoh: baterai, obat, cat</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

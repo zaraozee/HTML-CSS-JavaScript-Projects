@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pemeriksa Suhu Tubuh</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="health-card">
+      <div class="header">
+        <i class="fas fa-thermometer-half icon"></i>
+        <h1>Pemeriksa Suhu Tubuh</h1>
+        <p class="subtitle">Periksa status kesehatan Anda berdasarkan suhu tubuh</p>
+      </div>
+      
+      <div class="input-group">
+        <label for="suhu">
+          <i class="fas fa-temperature-high"></i> Masukkan Suhu Tubuh (°C):
+        </label>
+        <input type="number" id="suhu" placeholder="Contoh: 37.5" step="0.1" class="input-field">
+      </div>
+      
+      <button onclick="cekSuhu()" class="check-btn">
+        <i class="fas fa-stethoscope"></i> Periksa
+      </button>
+      
+      <div class="result" id="output">
+        <div class="result-placeholder">
+          <i class="fas fa-info-circle"></i> Hasil pemeriksaan akan muncul di sini
+        </div>
+      </div>
+      
+      <div class="info-box">
+        <h3><i class="fas fa-info-circle"></i> Panduan Suhu Tubuh</h3>
+        <ul>
+          <li><span class="hypothermia">Hipotermia:</span> Di bawah 36.1°C</li>
+          <li><span class="normal">Normal:</span> 36.1°C - 37.2°C</li>
+          <li><span class="mild">Demam Ringan:</span> 37.3°C - 38.0°C</li>
+          <li><span class="moderate">Demam Sedang:</span> 38.1°C - 39.0°C</li>
+          <li><span class="high">Demam Tinggi:</span> Di atas 39.0°C</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

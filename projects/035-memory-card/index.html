@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memory Card</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-brain"></i>Memory Card</h1>
+            <div id="stats">
+                <div class="stat-item">
+                    <i class="fas fa-times-circle"></i>
+                    <span id="mistakes">0</span> Kesalahan
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span id="matches">0</span>/15 Pasangan
+                </div>
+                <div class="stat-item timer">
+                    <i class="fas fa-clock"></i>
+                    <span id="time">00:00</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="game-container">
+            <div id="game"></div>
+        </div>
+
+        <button id="restartBtn"><i class="fas fa-redo"></i> Mulai Ulang</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

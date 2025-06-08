@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: #fff;
+  margin: 0;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  padding: 30px;
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+h1 {
+  color: #00b4d8;
+  margin-bottom: 15px;
+  font-size: 2.2rem;
+  text-shadow: 0 0 10px rgba(0, 180, 216, 0.5);
+}
+
+.instruction {
+  color: #a8dadc;
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+}
+
+.game-area {
+  margin-bottom: 25px;
+}
+
+input[type="number"] {
+  padding: 12px 15px;
+  font-size: 1.1rem;
+  width: 200px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  margin-bottom: 15px;
+  transition: all 0.3s;
+}
+
+input[type="number"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 180, 216, 0.5);
+  transform: scale(1.02);
+}
+
+button {
+  padding: 12px 25px;
+  font-size: 1.1rem;
+  background: linear-gradient(to right, #00b4d8, #0077b6);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 600;
+}
+
+button:hover {
+  background: linear-gradient(to right, #0096c7, #023e8a);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.attempts {
+  margin-top: 15px;
+  font-size: 1rem;
+  color: #a8dadc;
+}
+
+.message {
+  min-height: 60px;
+  font-size: 1.2rem;
+  margin: 20px 0;
+  padding: 15px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  transition: all 0.5s;
+}
+
+.correct {
+  color: #80ffdb;
+  background: rgba(72, 199, 142, 0.2);
+  border: 1px solid #48c78e;
+}
+
+.incorrect {
+  color: #ff758f;
+  background: rgba(255, 87, 87, 0.2);
+  border: 1px solid #ff5757;
+}
+
+.hint {
+  color: #ffd166;
+  background: rgba(255, 209, 102, 0.2);
+  border: 1px solid #ffd166;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 500px) {
+  .container {
+    padding: 20px;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  input[type="number"] {
+    width: 80%;
+  }
+}

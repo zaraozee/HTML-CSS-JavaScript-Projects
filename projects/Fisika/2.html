@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hitung Keadaan Zat</title>
+    <style>
+  body {
+    background-color: #afddf3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    text-align: center;
+  }  
+    #project2 {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f4f8;
+    color: #333;
+    padding: 20px;
+    max-width: 320px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    margin-bottom: 40px;
+  }
+  #project2 h2 {
+    color: #007acc;
+    margin-bottom: 10px;
+  }
+  #project2 label {
+    display: block;
+    margin-top: 10px;
+    font-weight: 500;
+  }
+  #project2 input[type=number] {
+    width: 95%;
+    padding: 7px;
+    margin-top: 6px;
+    border: 1.5px solid #ccc;
+    border-radius: 6px;
+    transition: border-color 0.3s ease;
+  }
+  #project2 input[type=number]:focus {
+    border-color: #007acc;
+    outline: none;
+  }
+  #project2 button {
+    margin-top: 12px;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    background-color: #007acc;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  #project2 button:hover {
+    background-color: #005f99;
+  }
+  #project2 p {
+    margin-top: 15px;
+    font-weight: 600;
+  }
+    </style>
+</head>
+<body>
+    <section id="project2" class="project">
+    <h2>Hitung Keadaan Zat Berdasarkan Suhu</h2>
+    <label for="suhu2">Masukkan suhu zat (°C):</label>
+    <input type="number" id="suhu2" />
+    <button id="btnHitung2">Hitung</button>
+    <p>Hasil: <span id="hasil2">-</span></p>
+    </section>
+
+    <script>
+    document.getElementById('btnHitung2').addEventListener('click', () => {
+        const suhu = parseFloat(document.getElementById('suhu2').value);
+        const hasil = document.getElementById('hasil2');
+        if (isNaN(suhu)) {
+        hasil.textContent = 'Mohon masukkan angka yang valid.';
+        return;
+        }
+        let keadaanZat = '';
+        if (suhu <= 0) keadaanZat = 'padat';
+        else if (suhu > 0 && suhu < 100) keadaanZat = 'cair';
+        else keadaanZat = 'gas';
+        hasil.textContent = `Pada suhu ${suhu}°C, zat berada dalam keadaan ${keadaanZat}.`;
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuis Indonesia | Quiz App</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Start Screen -->
+        <div class="start-screen" id="start-screen">
+            <h1>KUIS INDONESIA</h1>
+            <p>Uji pengetahuanmu tentang Indonesia!</p>
+            <button id="start-btn">Mulai Kuis</button>
+        </div>
+
+        <!-- Quiz Container -->
+        <div class="quiz-container" id="quiz-container" style="display: none;">
+            <div class="header">
+                <div class="timer">
+                    <span>⏱️</span>
+                    <span id="time">30</span>
+                </div>
+                <div class="score">
+                    <span>🏆</span>
+                    <span id="score">0</span>
+                </div>
+            </div>
+
+            <div class="question" id="question"></div>
+            <div class="options" id="options"></div>
+
+            <div class="feedback" id="feedback"></div>
+            <button id="next-btn" style="display: none;">Lanjut</button>
+        </div>
+
+        <!-- Result Screen -->
+        <div class="result-screen" id="result-screen" style="display: none;">
+            <h1>Hasil Kuis</h1>
+            <div class="final-score" id="final-score"></div>
+            <div class="leaderboard">
+                <h2>Peringkat</h2>
+                <ol id="leaderboard"></ol>
+            </div>
+            <button id="restart-btn">Main Lagi</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

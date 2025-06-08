@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Flashlight</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Interactive Flashlight</h1>
+        <div class="flashlight-container">
+            <div class="flashlight">
+                <div class="upper">
+                    <div class="reflector"></div>
+                </div>
+                <div class="neck"></div>
+                <div class="body">
+                    <button id="power-button" aria-label="Toggle flashlight" aria-pressed="false"></button>
+                    <div class="grip"></div>
+                </div>
+                <div id="light-beam"></div>
+            </div>
+        </div>
+        <div class="instructions">
+            <p>Click the button to toggle the flashlight</p>
+            <p>Or press <span class="key">Space</span> key</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

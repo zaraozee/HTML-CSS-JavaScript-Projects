@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pengatur Cuaca</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="sunny">
+  <div class="weather-container">
+    <h1><i class="fas fa-cloud-sun"></i> Pengatur Cuaca</h1>
+    
+    <div class="weather-display">
+      <div id="weather-icon"><i class="fas fa-sun"></i></div>
+      <div id="weather-description">Cuaca Cerah</div>
+    </div>
+    
+    <div class="weather-controls">
+      <label for="weather"><i class="fas fa-umbrella-beach"></i> Pilih Cuaca:</label>
+      <select id="weather">
+        <option value="sunny">Cerah</option>
+        <option value="cloudy">Mendung</option>
+        <option value="rainy">Hujan</option>
+        <option value="stormy">Badai</option>
+      </select>
+    </div>
+    
+    <div class="weather-info">
+      <p><i class="fas fa-info-circle"></i> Pilih jenis cuaca untuk melihat perubahan visual</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

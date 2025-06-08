@@ -1,0 +1,191 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f8ff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+.character-container {
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.character {
+    position: relative;
+    width: 200px;
+    height: 400px;
+    margin: 0 auto 30px;
+}
+
+.face {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background-color: #ffdbac;
+    border-radius: 50%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.eyes {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 20px 0;
+}
+
+.eye {
+    width: 30px;
+    height: 40px;
+    background-color: #333;
+    border-radius: 50%;
+}
+
+.mouth {
+    width: 40px;
+    height: 20px;
+    background-color: #ff6b6b;
+    border-radius: 0 0 20px 20px;
+    margin: 10px auto 0;
+    transition: all 0.3s ease;
+}
+
+.body {
+    position: absolute;
+    width: 100px;
+    height: 150px;
+    background-color: #4b9cd3;
+    top: 110px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 20px 20px 0 0;
+}
+
+.arms {
+    position: absolute;
+    width: 200px;
+    top: 120px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.arm {
+    width: 30px;
+    height: 100px;
+    background-color: #4b9cd3;
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+}
+
+.left-arm {
+    transform-origin: top right;
+}
+
+.right-arm {
+    transform-origin: top left;
+}
+
+.legs {
+    position: absolute;
+    width: 100px;
+    top: 260px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: space-between;
+}
+
+.leg {
+    width: 30px;
+    height: 100px;
+    background-color: #1e6ea7;
+    border-radius: 0 0 15px 15px;
+    transition: transform 0.3s ease;
+}
+
+.controls {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.controls button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4b9cd3;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.controls button:hover {
+    background-color: #1e6ea7;
+}
+
+.mood-display {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+/* Animation classes */
+.dancing {
+    animation: dance 1s infinite;
+}
+
+.jumping {
+    animation: jump 0.5s alternate infinite;
+}
+
+.sad .mouth {
+    height: 10px;
+    width: 30px;
+    border-radius: 20px 20px 20px 20px;
+}
+
+.happy .mouth {
+    height: 20px;
+    width: 40px;
+    border-radius: 0 0 20px 20px;
+}
+
+.surprised .mouth {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+}
+
+.surprised .eyes .eye {
+    height: 30px;
+    width: 30px;
+}
+
+@keyframes dance {
+    0%, 100% {
+        transform: rotate(-5deg);
+    }
+    50% {
+        transform: rotate(5deg);
+    }
+}
+
+@keyframes jump {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-20px);
+    }
+}

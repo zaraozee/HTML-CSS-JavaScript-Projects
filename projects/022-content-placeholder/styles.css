@@ -1,0 +1,168 @@
+:root {
+    --placeholder-bg: #f6f7f8;
+    --placeholder-highlight: #e8e8e8;
+    --card-bg: #fff;
+    --text-color: #333;
+    --border-radius: 8px;
+    --animation-duration: 1.5s;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    padding: 20px 0;
+}
+
+.card {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-header {
+    height: 200px;
+    width: 100%;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-title {
+    margin: 0 0 15px;
+    color: var(--text-color);
+    height: 24px;
+}
+
+.card-excerpt {
+    color: #777;
+    margin: 0 0 20px;
+    line-height: 1.5;
+}
+
+.card-excerpt span {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.author {
+    display: flex;
+    align-items: center;
+}
+
+.profile-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 15px;
+}
+
+.author-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.author-info strong {
+    color: var(--text-color);
+    margin-bottom: 5px;
+    height: 18px;
+}
+
+.author-info small {
+    color: #999;
+    height: 16px;
+}
+
+/* Placeholder styles */
+.placeholder {
+    background-color: var(--placeholder-bg);
+    background-image: linear-gradient(
+        to right,
+        var(--placeholder-bg) 0%,
+        var(--placeholder-highlight) 20%,
+        var(--placeholder-bg) 40%,
+        var(--placeholder-bg) 100%
+    );
+    background-size: 200% 100%;
+    animation: placeholderShimmer var(--animation-duration) linear infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+.placeholder-text {
+    border-radius: 4px;
+}
+
+.card-header.placeholder {
+    height: 200px;
+}
+
+.card-title.placeholder {
+    width: 80%;
+}
+
+.card-excerpt .placeholder {
+    width: 100%;
+    height: 12px;
+    margin-bottom: 8px;
+}
+
+.card-excerpt .placeholder:last-child {
+    width: 60%;
+    margin-bottom: 0;
+}
+
+.profile-img.placeholder {
+    border-radius: 50%;
+}
+
+.author-info .placeholder {
+    width: 100px;
+}
+
+.author-info .placeholder:last-child {
+    width: 70px;
+}
+
+@keyframes placeholderShimmer {
+    0% {
+        background-position: 100% 0;
+    }
+    100% {
+        background-position: -100% 0;
+    }
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .card-header {
+        height: 150px;
+    }
+    
+    .card-content {
+        padding: 15px;
+    }
+}

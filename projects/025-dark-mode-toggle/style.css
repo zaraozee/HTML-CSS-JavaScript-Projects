@@ -1,0 +1,128 @@
+* {
+  transition: background-color 0.4s, color 0.4s;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  align-items: center;
+  background-color: #f5f5f5;
+  color: #333;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  text-align: center;
+  padding: 2rem;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+body.dark {
+  background-color: #121212;
+  color: #f5f5f5;
+}
+
+body.dark .container {
+  background-color: rgba(30, 30, 30, 0.8);
+}
+
+.input {
+  visibility: hidden;
+}
+
+.label {
+  position: relative;
+  width: 80px;
+  height: 40px;
+  background-color: #333;
+  border-radius: 20px;
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.label:active::after {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  top: -30px;
+  left: -30px;
+  animation: ripple 0.6s ease-out;
+}
+
+.circle {
+  width: 34px;
+  background-color: white;
+  height: 34px;
+  border-radius: 50%;
+  top: 3px;
+  position: absolute;
+  left: 3px;
+  animation: toggleOff 0.4s linear forwards;
+  z-index: 1;
+}
+
+.sun, .moon {
+  position: absolute;
+  top: 8px;
+  font-size: 18px;
+  transition: all 0.4s;
+}
+
+.sun {
+  left: 8px;
+}
+
+.moon {
+  right: 8px;
+  opacity: 0;
+}
+
+.input:checked + .label {
+  background-color: #ccc;
+}
+
+.input:checked + .label .circle {
+  animation: toggleOn 0.4s linear forwards;
+  background-color: #333;
+}
+
+.input:checked + .label .sun {
+  opacity: 0;
+}
+
+.input:checked + .label .moon {
+  opacity: 1;
+}
+
+@keyframes toggleOn {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(40px);
+  }
+}
+
+@keyframes toggleOff {
+  0% {
+    transform: translateX(40px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(2);
+    opacity: 0;
+  }
+}

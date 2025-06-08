@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+:root {
+    --primary-color: #8e44ad;
+    --secondary-color: #9b59b6;
+    --dark-color: #2c3e50;
+    --light-color: #ecf0f1;
+    --nav-bg: #ffffff;
+    --nav-height: 70px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: linear-gradient(135deg, #8e44ad, #9b59b6);
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.phone {
+    position: relative;
+    overflow: hidden;
+    border: 10px solid #fff;
+    border-radius: 30px;
+    height: 650px;
+    width: 350px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.screen {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: calc(100% - var(--nav-height));
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transform: translateY(10px);
+}
+
+.content.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.content-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    color: white;
+    transform: translateY(20px);
+    transition: all 0.5s ease 0.2s;
+    opacity: 0;
+}
+
+.content.show .content-overlay {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.content-overlay h2 {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.content-overlay p {
+    font-weight: 300;
+    font-size: 0.9rem;
+}
+
+nav {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: var(--nav-height);
+    background-color: var(--nav-bg);
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    height: 100%;
+}
+
+nav li {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+    color: #777;
+    transition: all 0.3s ease;
+}
+
+.nav-icon {
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+nav li p {
+    font-size: 0.7rem;
+    margin-top: 5px;
+    transition: all 0.3s ease;
+}
+
+.active-indicator {
+    position: absolute;
+    top: -10px;
+    width: 0;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+nav li.active {
+    color: var(--primary-color);
+}
+
+nav li.active .nav-icon {
+    transform: translateY(-5px);
+}
+
+nav li.active .active-indicator {
+    width: 30px;
+}
+
+nav li:hover:not(.active) {
+    color: var(--secondary-color);
+}
+
+/* Phone notch styling */
+.phone::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    height: 20px;
+    background-color: #fff;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    z-index: 10;
+}
+
+/* Responsive adjustments */
+@media (max-width: 400px) {
+    .phone {
+        height: 600px;
+        width: 320px;
+    }
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kasir Sederhana</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Kasir Sederhana</h1>
+        
+        <div class="kasir-app">
+            <div class="produk-section">
+                <h2>Daftar Produk</h2>
+                <div class="produk-list">
+                    <!-- Produk akan diisi oleh JavaScript -->
+                </div>
+            </div>
+            
+            <div class="transaksi-section">
+                <h2>Transaksi</h2>
+                <div class="cart">
+                    <table id="cart-table">
+                        <thead>
+                            <tr>
+                                <th>Produk</th>
+                                <th>Harga</th>
+                                <th>Qty</th>
+                                <th>Subtotal</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cart-items">
+                            <!-- Item keranjang akan diisi oleh JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="total-section">
+                    <div class="total-label">Total:</div>
+                    <div class="total-amount" id="total-amount">Rp 0</div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button id="reset-btn" class="btn reset">Reset Transaksi</button>
+                    <button id="bayar-btn" class="btn bayar">Bayar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

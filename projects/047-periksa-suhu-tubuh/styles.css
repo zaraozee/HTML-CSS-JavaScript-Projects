@@ -1,0 +1,223 @@
+:root {
+  --primary-color: #4a6bff;
+  --primary-dark: #3a56d4;
+  --hypothermia: #17a2b8;
+  --normal: #28a745;
+  --mild: #ffc107;
+  --moderate: #fd7e14;
+  --high: #dc3545;
+  --light-color: #f8f9fa;
+  --dark-color: #212529;
+  --gray-color: #6c757d;
+  --border-radius: 12px;
+  --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e2e8f0 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  color: var(--dark-color);
+}
+
+.container {
+  width: 100%;
+  max-width: 500px;
+}
+
+.health-card {
+  background-color: white;
+  border-radius: var(--border-radius);
+  padding: 30px;
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+}
+
+.health-card:hover {
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.icon {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+}
+
+h1 {
+  color: var(--primary-color);
+  font-size: 1.8rem;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  color: var(--gray-color);
+  font-size: 0.9rem;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--dark-color);
+}
+
+label i {
+  margin-right: 8px;
+  color: var(--primary-color);
+}
+
+.input-field {
+  width: 100%;
+  padding: 14px 15px;
+  border: 2px solid #e2e8f0;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(74, 107, 255, 0.2);
+}
+
+.check-btn {
+  width: 100%;
+  padding: 14px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.check-btn:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.check-btn:active {
+  transform: translateY(0);
+}
+
+.result {
+  background-color: var(--light-color);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  text-align: center;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+  border: 2px dashed #e2e8f0;
+  transition: var(--transition);
+}
+
+.result-placeholder {
+  color: var(--gray-color);
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.result-content {
+  font-size: 1.1rem;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.result-value {
+  font-size: 1.3rem;
+}
+
+.info-box {
+  background-color: #f8f9fe;
+  border-radius: var(--border-radius);
+  padding: 20px;
+}
+
+.info-box h3 {
+  color: var(--primary-color);
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.info-box ul {
+  list-style-type: none;
+}
+
+.info-box li {
+  margin-bottom: 8px;
+  padding-left: 25px;
+  position: relative;
+}
+
+.info-box li:before {
+  content: "•";
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  position: absolute;
+  left: 5px;
+  top: -5px;
+}
+
+.hypothermia { color: var(--hypothermia); font-weight: 600; }
+.normal { color: var(--normal); font-weight: 600; }
+.mild { color: var(--mild); font-weight: 600; }
+.moderate { color: var(--moderate); font-weight: 600; }
+.high { color: var(--high); font-weight: 600; }
+
+/* Status colors */
+.status-hypothermia { background-color: var(--hypothermia); }
+.status-normal { background-color: var(--normal); }
+.status-mild { background-color: var(--mild); color: #000; }
+.status-moderate { background-color: var(--moderate); }
+.status-high { background-color: var(--high); }
+
+@media (max-width: 576px) {
+  .health-card {
+    padding: 20px;
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+  }
+  
+  .input-field {
+    padding: 12px 15px;
+  }
+}

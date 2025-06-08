@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Teka-Teki Tebak Angka</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Teka-Teki Tebak Angka</h1>
+    <p class="instruction">Saya sedang memikirkan angka antara 1 dan 100. Bisakah kamu menebaknya?</p>
+    
+    <div class="game-area">
+      <input type="number" id="guessInput" placeholder="Masukkan tebakanmu" min="1" max="100">
+      <button id="guessBtn">Tebak</button>
+      <div class="attempts">Percobaan: <span id="attempts">0</span></div>
+    </div>
+    
+    <div class="message" id="message"></div>
+    
+    <button id="newGameBtn" class="hidden">Main Lagi</button>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

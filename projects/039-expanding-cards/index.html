@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expanding Cards</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>World Wonders</h1>
+        <p class="subtitle">Click on a card to expand it</p>
+        
+        <div class="cards-container">
+            <div class="card active" style="background-image: url('https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1368&q=80')">
+                <div class="card-content">
+                    <h3>Grand Canyon</h3>
+                    <p class="card-description">The Grand Canyon in Arizona is a natural formation distinguished by layered bands of red rock, revealing millions of years of geological history.</p>
+                </div>
+            </div>
+            
+            <div class="card" style="background-image: url('https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1530&q=80')">
+                <div class="card-content">
+                    <h3>Great Wall of China</h3>
+                    <p class="card-description">The Great Wall of China is an ancient series of walls and fortifications, totaling more than 13,000 miles in length, located in northern China.</p>
+                </div>
+            </div>
+            
+            <div class="card" style="background-image: url('https://images.unsplash.com/photo-1580041065738-e628237a0b4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80')">
+                <div class="card-content">
+                    <h3>Pyramids of Giza</h3>
+                    <p class="card-description">The Giza pyramid complex includes the Great Pyramid, the Pyramid of Khafre, and the Pyramid of Menkaure, along with their associated pyramid complexes and the Great Sphinx.</p>
+                </div>
+            </div>
+            
+            <div class="card" style="background-image: url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80')">
+                <div class="card-content">
+                    <h3>Colosseum</h3>
+                    <p class="card-description">The Colosseum is an oval amphitheatre in the centre of Rome, Italy. It is the largest ancient amphitheatre ever built.</p>
+                </div>
+            </div>
+            
+            <div class="card" style="background-image: url('https://images.unsplash.com/photo-1566438480900-0609be27a4be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1498&q=80')">
+                <div class="card-content">
+                    <h3>Taj Mahal</h3>
+                    <p class="card-description">The Taj Mahal is an ivory-white marble mausoleum on the right bank of the Yamuna river in the Indian city of Agra.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button id="prev-btn" class="btn">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button id="next-btn" class="btn">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

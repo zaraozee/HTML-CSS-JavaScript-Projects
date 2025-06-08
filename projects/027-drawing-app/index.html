@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drawing App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <h1>Drawing App</h1>
+        
+        <div class="tools">
+            <div class="color-picker">
+                <label for="color">Warna:</label>
+                <input type="color" id="color" value="#000000">
+            </div>
+            
+            <div class="brush-size">
+                <label for="size">Ukuran Kuas:</label>
+                <input type="range" id="size" min="1" max="50" value="5">
+                <span id="size-value">5</span>
+            </div>
+            
+            <div class="buttons">
+                <button id="clear">Hapus Kanvas</button>
+                <button id="save">Simpan Gambar</button>
+            </div>
+        </div>
+        
+        <canvas id="canvas"></canvas>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

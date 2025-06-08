@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulasi Detak Jantung</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1><i class="fas fa-heartbeat"></i> Simulasi Detak Jantung</h1>
+        
+        <div class="heartbeat-app">
+            <div class="heart-rate">
+                <div class="heart-icon" id="heart-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="rate-display">
+                    <span id="heart-rate">--</span>
+                    <span class="bpm">BPM</span>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <canvas id="heartbeat-chart"></canvas>
+            </div>
+            
+            <div class="controls">
+                <div class="control-group">
+                    <label for="rate-slider">Detak Jantung (BPM):</label>
+                    <input type="range" id="rate-slider" min="40" max="180" value="72">
+                    <span id="rate-value">72</span>
+                </div>
+                
+                <div class="control-group">
+                    <label for="irregular">Detak Tidak Teratur:</label>
+                    <input type="checkbox" id="irregular">
+                </div>
+                
+                <div class="control-group">
+                    <label for="stress-level">Tingkat Stres:</label>
+                    <select id="stress-level">
+                        <option value="normal">Normal</option>
+                        <option value="medium">Sedang</option>
+                        <option value="high">Tinggi</option>
+                    </select>
+                </div>
+                
+                <button id="start-stop" class="btn"><i class="fas fa-play"></i> Mulai</button>
+            </div>
+            
+            <div class="status" id="status">
+                Status: Tidak aktif
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

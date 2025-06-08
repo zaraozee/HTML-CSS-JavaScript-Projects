@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Kalkulator Tagihan Listrik</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f8ff;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 25px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #34495e;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .result {
+            margin-top: 25px;
+            padding: 15px;
+            background-color: #eaf2f8;
+            border-radius: 5px;
+            border-left: 5px solid #3498db;
+        }
+        .result h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        .detail {
+            margin-top: 10px;
+            padding-left: 15px;
+        }
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        .total {
+            font-weight: bold;
+            font-size: 18px;
+            color: #e74c3c;
+            margin-top: 10px;
+            border-top: 1px solid #ccc;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Kalkulator Tagihan Listrik</h1>
+        
+        <div class="form-group">
+            <label for="daya">Daya Listrik (VA):</label>
+            <select id="daya">
+                <option value="450">450 VA</option>
+                <option value="900">900 VA</option>
+                <option value="1300" selected>1300 VA</option>
+                <option value="2200">2200 VA</option>
+                <option value="3500">3500 VA</option>
+                <option value="5500">5500 VA</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="pemakaian">Pemakaian (kWh):</label>
+            <input type="number" id="pemakaian" min="0" step="0.1" placeholder="Masukkan jumlah kWh">
+        </div>
+        
+        <div class="form-group">
+            <label for="jenis">Jenis Pelanggan:</label>
+            <select id="jenis">
+                <option value="rumah">Rumah Tangga</option>
+                <option value="bisnis">Bisnis</option>
+                <option value="industri">Industri</option>
+            </select>
+        </div>
+        
+        <button onclick="hitungTagihan()">Hitung Tagihan</button>
+        
+        <div class="result" id="hasil" style="display: none;">
+            <h3>Rincian Tagihan</h3>
+            <div class="detail" id="detail"></div>
+            <div class="total" id="total"></div>
+        </div>
+    </div>
+
+    <script>
+        function hitungTagihan() {
+            const daya = parseInt(document.getElementById("daya").value);
+            const pemakaian = parseFloat(document.getElementById("pemakaian").value);
+            const jenis = document.getElementById("jenis").value;
+            
+            // Validasi input
+            if (isNaN(pemakaian)) {
+                alert("Masukkan jumlah pemakaian yang valid!");
+                return;
+            }
+            
+            // Tentukan tarif berdasarkan daya dan jenis pelanggan
+            let tarifBlok1, tarifBlok2, tarifBlok3, batasBlok1, batasBlok2;
+            let abodemen = 0;
+            
+            // Rumah Tangga
+            if (jenis === "rumah") {
+                if (daya === 450) {
+                    abodemen = 11000;
+                    tarifBlok1 = 415;
+                    batasBlok1 = 30;
+                    tarifBlok2 = 605;
+                } 
+                else if (daya === 900) {
+                    abodemen = 13500;
+                    tarifBlok1 = 445;
+                    batasBlok1 = 30;
+                    tarifBlok2 = 605;
+                }
+                else if (daya === 1300 || daya === 2200) {
+                    abodemen = 14400;
+                    tarifBlok1 = 605;
+                    batasBlok1 = 30;
+                    tarifBlok2 = 1444;
+                }
+                else {
+                    abodemen = 16200;
+                    tarifBlok1 = 1444;
+                    batasBlok1 = 0;
+                    tarifBlok2 = 1444;
+                }
+            }
+            // Bisnis
+            else if (jenis === "bisnis") {
+                abodemen = 30000;
+                tarifBlok1 = 1444;
+                batasBlok1 = 0;
+                tarifBlok2 = 1444;
+            }
+            // Industri
+            else {
+                abodemen = 40000;
+                tarifBlok1 = 1444;
+                batasBlok1 = 0;
+                tarifBlok2 = 1444;
+            }
+            
+            // Hitung biaya pemakaian
+            let biayaPemakaian = 0;
+            
+            if (batasBlok1 > 0 && pemakaian <= batasBlok1) {
+                biayaPemakaian = pemakaian * tarifBlok1;
+            } 
+            else if (batasBlok1 > 0) {
+                biayaPemakaian = (batasBlok1 * tarifBlok1) + ((pemakaian - batasBlok1) * tarifBlok2);
+            }
+            else {
+                biayaPemakaian = pemakaian * tarifBlok1;
+            }
+            
+            // Hitung total tagihan
+            const ppn = 0.1 * biayaPemakaian; // PPN 10%
+            const total = abodemen + biayaPemakaian + ppn;
+            
+            // Tampilkan hasil
+            document.getElementById("detail").innerHTML = `
+                <div class="detail-item">
+                    <span>Abodemen:</span>
+                    <span>Rp${abodemen.toLocaleString()}</span>
+                </div>
+                <div class="detail-item">
+                    <span>Biaya Pemakaian (${pemakaian} kWh):</span>
+                    <span>Rp${biayaPemakaian.toLocaleString()}</span>
+                </div>
+                <div class="detail-item">
+                    <span>PPN (10%):</span>
+                    <span>Rp${ppn.toLocaleString()}</span>
+                </div>
+            `;
+            
+            document.getElementById("total").textContent = `Total Tagihan: Rp${total.toLocaleString()}`;
+            document.getElementById("hasil").style.display = "block";
+        }
+    </script>
+</body>
+</html>

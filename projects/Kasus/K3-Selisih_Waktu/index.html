@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulasi Selisih Waktu</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Kalkulasi Selisih Waktu</h2>
+        <label for="jamMulai">Jam Mulai (0-23):</label>
+        <input type="number" id="jamMulai" min="0" max="23">
+
+        <label for="menitMulai">Menit Mulai (0-59):</label>
+        <input type="number" id="menitMulai" min="0" max="59">
+
+        <label for="jamSelesai">Jam Selesai (0-23):</label>
+        <input type="number" id="jamSelesai" min="0" max="23">
+
+        <label for="menitSelesai">Menit Selesai (0-59):</label>
+        <input type="number" id="menitSelesai" min="0" max="59">
+
+        <button id="btnHitung">Hitung Selisih Waktu</button>
+
+        <p class="result" id="hasil">Selisih waktu: -</p>
+        <p class="error" id="errorMsg"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

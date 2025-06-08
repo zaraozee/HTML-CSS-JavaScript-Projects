@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Kalkulasi Biaya Parkir</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Kalkulasi Biaya Parkir</h2>
+        <label for="jamMasuk">Jam Masuk (0-24):</label>
+        <input type="number" id="jamMasuk" min="0" max="24">
+
+        <label for="jamKeluar">Jam Keluar (0-24):</label>
+        <input type="number" id="jamKeluar" min="0" max="24">
+
+        <button id="btnHitung">Hitung Biaya Parkir</button>
+
+        <p class="result" id="hasil">Biaya parkir: -</p>
+        <p class="error" id="errorMsg"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Kalkulator Parkir dan Transportasi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        h2 {
+            color: #444;
+            margin-top: 0;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #555;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Kalkulator Parkir dan Transportasi</h1>
+        
+        <!-- Bagian 1: Biaya Parkir -->
+        <div class="section">
+            <h2>1. Hitung Biaya Parkir</h2>
+            <label for="jenisKendaraan">Jenis Kendaraan:</label>
+            <select id="jenisKendaraan">
+                <option value="mobil">Mobil</option>
+                <option value="motor">Motor</option>
+                <option value="truk">Truk/Bus</option>
+            </select>
+            
+            <label for="lamaParkir">Lama Parkir (jam):</label>
+            <input type="number" id="lamaParkir" min="1" value="1">
+            
+            <button onclick="hitungBiayaParkir()">Hitung Biaya Parkir</button>
+            
+            <div class="result" id="hasilParkir">Biaya parkir: -</div>
+        </div>
+        
+        <!-- Bagian 2: Jumlah Minibus -->
+        <div class="section">
+            <h2>2. Hitung Jumlah Minibus</h2>
+            <label for="jumlahPeserta">Jumlah Peserta:</label>
+            <input type="number" id="jumlahPeserta" min="1" value="1">
+            
+            <label for="kapasitasMinibus">Kapasitas per Minibus (default 12):</label>
+            <input type="number" id="kapasitasMinibus" min="1" value="12">
+            
+            <button onclick="hitungMinibus()">Hitung Jumlah Minibus</button>
+            
+            <div class="result" id="hasilMinibus">Jumlah minibus yang dibutuhkan: -</div>
+        </div>
+    </div>
+
+    <script>
+        // Fungsi untuk menghitung biaya parkir
+        function hitungBiayaParkir() {
+            const jenis = document.getElementById("jenisKendaraan").value;
+            const jam = parseInt(document.getElementById("lamaParkir").value);
+            
+            // Tarif parkir per jam
+            let tarif;
+            switch(jenis) {
+                case "motor":
+                    tarif = 2000;
+                    break;
+                case "mobil":
+                    tarif = 5000;
+                    break;
+                case "truk":
+                    tarif = 10000;
+                    break;
+                default:
+                    tarif = 0;
+            }
+            
+            // Hitung total biaya
+            const total = tarif * jam;
+            
+            // Tampilkan hasil
+            document.getElementById("hasilParkir").textContent = 
+                `Biaya parkir: Rp${total.toLocaleString()}`;
+        }
+        
+        // Fungsi untuk menghitung jumlah minibus
+        function hitungMinibus() {
+            const peserta = parseInt(document.getElementById("jumlahPeserta").value);
+            const kapasitas = parseInt(document.getElementById("kapasitasMinibus").value);
+            
+            if (isNaN(peserta) || peserta < 1 || isNaN(kapasitas) || kapasitas < 1) {
+                document.getElementById("hasilMinibus").textContent = 
+                    "Masukkan jumlah yang valid (minimal 1)";
+                return;
+            }
+            
+            // Hitung jumlah minibus (pembulatan ke atas)
+            const jumlahMinibus = Math.ceil(peserta / kapasitas);
+            
+            // Tampilkan hasil
+            document.getElementById("hasilMinibus").textContent = 
+                `Jumlah minibus yang dibutuhkan: ${jumlahMinibus}`;
+        }
+    </script>
+</body>
+</html>

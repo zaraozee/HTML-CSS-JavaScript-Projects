@@ -1,0 +1,156 @@
+:root {
+    --flashlight-color: #8c8c8c;
+    --flashlight-accent: #595959;
+    --light-color: rgba(255, 255, 102, 0.9);
+    --button-shadow: #666666;
+    --dark-bg: #111;
+    --medium-bg: #333;
+}
+
+body {
+    background-color: var(--medium-bg);
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.container {
+    text-align: center;
+    padding: 2rem;
+}
+
+h1 {
+    margin-bottom: 2rem;
+    color: #f0f0f0;
+}
+
+.flashlight-container {
+    perspective: 1000px;
+    margin-bottom: 2rem;
+}
+
+.flashlight {
+    width: 300px;
+    height: 400px;
+    position: relative;
+    margin: 0 auto;
+    transform-style: preserve-3d;
+    transform: rotateX(10deg);
+}
+
+.upper {
+    background-color: var(--flashlight-color);
+    height: 60px;
+    width: 200px;
+    margin: 0 auto;
+    border-radius: 10px 10px 0 0;
+    position: relative;
+    z-index: 2;
+}
+
+.reflector {
+    background-color: white;
+    height: 25px;
+    width: 100%;
+    position: absolute;
+    top: 15px;
+    border-radius: 3px;
+}
+
+.neck {
+    height: 0;
+    width: 140px;
+    border-top: 30px solid var(--flashlight-accent);
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.body {
+    height: 250px;
+    width: 140px;
+    background-color: var(--flashlight-color);
+    margin: 0 auto;
+    border-radius: 0 0 20px 20px;
+    position: relative;
+}
+
+.grip {
+    background-color: white;
+    height: 15px;
+    width: 100%;
+    position: absolute;
+    bottom: 80px;
+    border-radius: 3px;
+}
+
+#power-button {
+    height: 45px;
+    width: 45px;
+    background-color: white;
+    position: absolute;
+    top: 160px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    outline: none;
+    border: none;
+    box-shadow: 0 5px var(--button-shadow);
+    cursor: pointer;
+    transition: all 0.1s ease;
+    z-index: 3;
+}
+
+#power-button[aria-pressed="true"] {
+    transform: translateX(-50%) translateY(5px);
+    box-shadow: none;
+}
+
+#light-beam {
+    height: 0;
+    width: 300px;
+    border-top: 400px solid var(--light-color);
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    position: absolute;
+    top: -400px;
+    left: 50%;
+    transform: translateX(-50%);
+    visibility: hidden;
+    z-index: 0;
+    filter: blur(10px);
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#light-beam.visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+.instructions {
+    margin-top: 2rem;
+    font-size: 1.1rem;
+}
+
+.key {
+    background-color: #444;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-family: monospace;
+    box-shadow: 0 2px 0 #222;
+}
+
+/* Added focus styles for accessibility */
+#power-button:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 2px;
+}

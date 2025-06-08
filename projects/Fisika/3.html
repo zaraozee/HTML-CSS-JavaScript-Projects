@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kalkulator Energi Kinetik</title>
+    <style>
+        body {
+        background-color: #181818;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        text-align: center;
+    }  
+        #project3 {
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        background-color: #121212;
+        color: #eee;
+        max-width: 360px;
+        padding: 20px 25px;
+        border-radius: 15px;
+        box-shadow: 0 0 25px rgba(255, 255, 255, 0.05);
+        margin-bottom: 40px;
+    }
+    #project3 h2 {
+        color: #bb86fc;
+        margin-bottom: 10px;
+    }
+    #project3 label {
+        display: block;
+        margin-top: 14px;
+        font-weight: 500;
+    }
+    #project3 input[type=number] {
+        width: 95%;
+        padding: 8px;
+        margin-top: 6px;
+        border-radius: 8px;
+        border: 1px solid #333;
+        background-color: #222;
+        color: #eee;
+    }
+    #project3 input[type=number]:focus {
+        border-color: #bb86fc;
+        outline: none;
+    }
+    #project3 button {
+        margin-top: 16px;
+        width: 100%;
+        background-color: #bb86fc;
+        border: none;
+        font-size: 1.1rem;
+        font-weight: 700;
+        padding: 12px;
+        border-radius: 10px;
+        cursor: pointer;
+        color: #121212;
+        transition: background-color 0.3s ease;
+    }
+    #project3 button:hover {
+        background-color: #9e70e4;
+    }
+    #project3 p {
+        margin-top: 18px;
+        font-weight: 700;
+    }
+    #project3 p.error {
+        color: #cf6679;
+    }
+    </style>
+</head>
+<body>
+    <section id="project3" class="project">
+    <h2>Kalkulator Energi Kinetik</h2>
+    <label for="massa3">Masukkan massa benda (kg):</label>
+    <input type="number" id="massa3" />
+    <label for="kecepatan3">Masukkan kecepatan benda (m/s):</label>
+    <input type="number" id="kecepatan3" />
+    <button id="btnHitung3">Hitung Energi Kinetik</button>
+    <p class="result" id="hasil3">Hasil: -</p>
+    <p class="error" id="error3"></p>
+    </section>
+    <script>
+    document.getElementById('btnHitung3').addEventListener('click', () => {
+        const massaInput = document.getElementById('massa3').value;
+        const kecepatanInput = document.getElementById('kecepatan3').value;
+        const error = document.getElementById('error3');
+        const hasil = document.getElementById('hasil3');
+        error.textContent = '';
+        hasil.textContent = 'Hasil: -';
+
+        const massa = parseFloat(massaInput);
+        const kecepatan = parseFloat(kecepatanInput);
+
+        if (isNaN(massa) || massa <= 0) {
+        error.textContent = 'Mohon masukkan massa yang valid dan lebih besar dari 0.';
+        return;
+        }
+        if (isNaN(kecepatan) || kecepatan < 0) {
+        error.textContent = 'Mohon masukkan kecepatan yang valid (tidak negatif).';
+        return;
+        }
+
+        const Ek = 0.5 * massa * Math.pow(kecepatan, 2);
+        hasil.textContent = `Energi kinetik benda adalah: ${Ek.toFixed(2)} joule`;
+    });
+    </script>
+</body>
+</html>

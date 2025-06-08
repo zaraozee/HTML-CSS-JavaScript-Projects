@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Hitung Lama Bekerja</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        
+        label {
+            display: block;
+            margin-top: 10px;
+            color: #555;
+        }
+        
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        #hasil {
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Hitung Lama Bekerja</h2>
+        <label for="jamMasuk">Jam Masuk (1-12):</label>
+        <input type="number" id="jamMasuk" min="1" max="12">
+        <label for="jamPulang">Jam Pulang (1-12):</label>
+        <input type="number" id="jamPulang" min="1" max="12">
+
+        <button id="btnHitung">Hitung Lama Bekerja</button>
+
+        <p>Hasil: <span id="hasil">-</span></p>
+    </div>
+
+    <script>
+        document.getElementById("btnHitung").addEventListener("click", function() {
+            const jamMasuk = parseInt(document.getElementById("jamMasuk").value);
+            const jamPulang = parseInt(document.getElementById("jamPulang").value);
+            let lamaBekerja;
+
+            // Validasi input
+            if (isNaN(jamMasuk) || isNaN(jamPulang) || jamMasuk < 1 || jamMasuk > 12 || jamPulang < 1 || jamPulang > 12) {
+                document.getElementById("hasil").textContent = "Jam harus antara 1 hingga 12.";
+                return;
+            }
+
+            if (jamMasuk <= jamPulang) {
+                lamaBekerja = jamPulang - jamMasuk;
+            } else {
+                lamaBekerja = (12 - jamMasuk) + jamPulang;
+            }
+
+            document.getElementById("hasil").textContent = `Lama bekerja = ${lamaBekerja} jam`;
+        });
+    </script>
+</body>
+</html>

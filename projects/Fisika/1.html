@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hitung Kalor Jenis Es</title>
+<style>
+   body {
+    background-color: #b1d3da;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }  
+  #project1 {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f4f8;
+    color: #333;
+    padding: 20px;
+    max-width: 320px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    margin-bottom: 40px;
+  }
+  #project1 h2 {
+    color: #007acc;
+    margin-bottom: 10px;
+  }
+  #project1 label {
+    display: block;
+    margin-top: 10px;
+    font-weight: 500;
+  }
+  #project1 input[type=number], #project1 button {
+    width: 90%;
+    padding: 10px;
+    margin-top: 12px;
+    border-radius: 6px;
+    outline: none;
+  }
+  #project1 input[type=number] {
+    border: 2px solid #07475e;
+  }
+  #project1 button {
+    width: 100%;
+    background-color: #07475e;
+    color: #fff;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  #project1 button:hover {
+    background-color: #032d3f;
+  }
+  #project1 p {
+    margin-top: 15px;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+    <section id="project1" class="project">
+    <h2>Hitung Kalor Jenis Es</h2>
+    <label for="massa1">Masukkan massa :</label>
+    <input type="number" id="massa1" />
+    <label for="celcius1">Masukkan nilai celcius :</label>
+    <input type="number" id="celcius1" />
+    <label for="liter1">Masukkan nilai liter :</label>
+    <input type="number" id="liter1" />
+    <button id="btnHitung1">Hitung</button>
+    <p>Hasil: <span id="hasil1">0</span></p>
+    </section>
+
+    <script>
+    document.getElementById('btnHitung1').addEventListener('click', () => {
+        const m = parseFloat(document.getElementById('massa1').value) || 0;
+        const c = parseFloat(document.getElementById('celcius1').value) || 0;
+        const l = parseFloat(document.getElementById('liter1').value) || 0;
+        const dt = 0.5;
+        const q1 = m * c * dt;
+        const q2 = m * l;
+        const q3 = m * c * dt;
+        const totalKalor = q1 + q2 + q3;
+        document.getElementById('hasil1').textContent = totalKalor.toFixed(2);
+    });
+    </script>
+</body>
+</html>

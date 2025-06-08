@@ -1,0 +1,156 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f0f8ff;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 500px;
+    padding: 30px;
+    text-align: center;
+}
+
+h1 {
+    color: #e63946;
+    margin-bottom: 15px;
+    font-size: 28px;
+}
+
+.start-screen p {
+    margin-bottom: 25px;
+    font-size: 16px;
+    color: #555;
+}
+
+button {
+    background: #e63946;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+button:hover {
+    background: #d62839;
+    transform: translateY(-2px);
+}
+
+/* Quiz Container */
+.quiz-container .header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.timer, .score {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: bold;
+}
+
+.timer {
+    color: #e63946;
+}
+
+.score {
+    color: #2a9d8f;
+}
+
+.question {
+    font-size: 20px;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.option-btn {
+    background: #f1faee;
+    border: 2px solid #a8dadc;
+    padding: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: left;
+}
+
+.option-btn:hover {
+    background: #a8dadc;
+    border-color: #457b9d;
+}
+
+.option-btn.correct {
+    background: #2a9d8f;
+    color: white;
+    border-color: #2a9d8f;
+}
+
+.option-btn.incorrect {
+    background: #e63946;
+    color: white;
+    border-color: #e63946;
+}
+
+#next-btn {
+    margin-top: 20px;
+    display: none;
+    width: 100%;
+}
+
+.feedback {
+    margin: 15px 0;
+    font-weight: bold;
+    min-height: 24px;
+}
+
+/* Result Screen */
+.result-screen {
+    animation: fadeIn 0.5s;
+}
+
+.final-score {
+    font-size: 24px;
+    margin: 20px 0;
+    color: #e63946;
+}
+
+.leaderboard {
+    margin-top: 30px;
+    text-align: left;
+}
+
+.leaderboard ol {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+.leaderboard li {
+    margin-bottom: 8px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

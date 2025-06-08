@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Date Difference Calculator</title>
+</head>
+<body>
+  <div class="container">
+    <h2>Calculate Date Difference <br> (365 days/year, 30 days/month)</h2>
+    
+    <div class="date-input">
+      <div class="input-group">
+        <h3>First Date</h3>
+        <input type="number" id="hari1" placeholder="Day">
+        <input type="number" id="bulan1" placeholder="Month">
+        <input type="number" id="tahun1" placeholder="Year">
+      </div>
+
+      <div class="input-group">
+        <h3>Second Date</h3>
+        <input type="number" id="hari2" placeholder="Day">
+        <input type="number" id="bulan2" placeholder="Month">
+        <input type="number" id="tahun2" placeholder="Year">
+      </div>
+    </div>
+
+    <button onclick="hitungSelisih()">Calculate Difference</button>
+    <p id="hasilSelisih"></p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

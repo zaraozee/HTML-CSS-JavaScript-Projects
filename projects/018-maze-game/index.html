@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maze Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Maze Escape</h1>
+        
+        <div class="game-info">
+            <div class="level">Level: <span id="level">1</span></div>
+            <div class="timer">Time: <span id="time">60</span>s</div>
+            <div class="moves">Moves: <span id="moves">0</span></div>
+        </div>
+        
+        <div class="maze-container">
+            <div id="maze"></div>
+        </div>
+        
+        <div class="controls">
+            <p>Use arrow keys or WASD to move</p>
+            <button id="reset-btn">Reset Level</button>
+        </div>
+        
+        <div class="message" id="message"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

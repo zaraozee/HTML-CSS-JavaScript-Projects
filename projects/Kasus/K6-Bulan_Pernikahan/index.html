@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Kalkulator Bulan Pernikahan</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #fff5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #e74c3c;
+            margin-bottom: 30px;
+            font-family: 'Playfair Display', serif;
+        }
+        .heart {
+            color: #e74c3c;
+            font-size: 24px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #7f8c8d;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #c0392b;
+        }
+        .result {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #fdedec;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px dashed #e74c3c;
+        }
+        .months {
+            font-size: 36px;
+            color: #e74c3c;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .message {
+            font-style: italic;
+            color: #7f8c8d;
+            margin-top: 15px;
+        }
+        .anniversary {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #fadbd8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Kalkulator Bulan Pernikahan <span class="heart">❤</span></h1>
+        
+        <div class="form-group">
+            <label for="weddingDate">Tanggal Pernikahan:</label>
+            <input type="date" id="weddingDate" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="currentDate">Tanggal Hari Ini (opsional):</label>
+            <input type="date" id="currentDate">
+        </div>
+        
+        <button onclick="hitungBulanPernikahan()">Hitung Bulan Pernikahan</button>
+        
+        <div class="result" id="hasil" style="display: none;">
+            <div>Anda sudah menikah selama</div>
+            <div class="months" id="bulanPernikahan">0</div>
+            <div>bulan</div>
+            <div class="message" id="pesan"></div>
+            <div class="anniversary" id="ulangTahun"></div>
+        </div>
+    </div>
+
+    <script>
+        function hitungBulanPernikahan() {
+            // Ambil input tanggal
+            const weddingDateInput = document.getElementById("weddingDate").value;
+            
+            if (!weddingDateInput) {
+                alert("Silakan masukkan tanggal pernikahan Anda!");
+                return;
+            }
+            
+            const weddingDate = new Date(weddingDateInput);
+            let currentDate = new Date();
+            
+            // Jika user memasukkan tanggal manual
+            const currentDateInput = document.getElementById("currentDate").value;
+            if (currentDateInput) {
+                currentDate = new Date(currentDateInput);
+            }
+            
+            // Validasi tanggal
+            if (weddingDate > currentDate) {
+                alert("Tanggal pernikahan tidak boleh lebih baru dari tanggal hari ini!");
+                return;
+            }
+            
+            // Hitung selisih bulan
+            const months = monthDiff(weddingDate, currentDate);
+            
+            // Tampilkan hasil
+            document.getElementById("bulanPernikahan").textContent = months;
+            document.getElementById("hasil").style.display = "block";
+            
+            // Beri pesan khusus
+            const message = document.getElementById("pesan");
+            const anniversary = document.getElementById("ulangTahun");
+            
+            if (months === 0) {
+                message.textContent = "Selamat atas pernikahan Anda! 💕";
+                anniversary.textContent = "";
+            } else if (months === 1) {
+                message.textContent = "Masih bulan madu ya! 🌴";
+                anniversary.textContent = "";
+            } else if (months % 12 === 0) {
+                const years = months / 12;
+                message.textContent = `Selamat ${years} tahun pernikahan! 🎉`;
+                anniversary.textContent = `Ulang tahun pernikahan berikutnya: ${formatDate(addMonths(weddingDate, (years+1)*12))}`;
+            } else {
+                const nextAnniversary = 12 - (months % 12);
+                message.textContent = getRandomMessage();
+                anniversary.textContent = `Ulang tahun pernikahan berikutnya dalam ${nextAnniversary} bulan (${formatDate(addMonths(weddingDate, months + nextAnniversary))})`;
+            }
+        }
+        
+        // Fungsi menghitung selisih bulan antara dua tanggal
+        function monthDiff(startDate, endDate) {
+            let months;
+            months = (endDate.getFullYear() - startDate.getFullYear()) * 12;
+            months -= startDate.getMonth();
+            months += endDate.getMonth();
+            return months <= 0 ? 0 : months;
+        }
+        
+        // Fungsi menambahkan bulan ke tanggal
+        function addMonths(date, months) {
+            const newDate = new Date(date);
+            newDate.setMonth(newDate.getMonth() + months);
+            return newDate;
+        }
+        
+        // Format tanggal menjadi string yang lebih baik
+        function formatDate(date) {
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            return date.toLocaleDateString('id-ID', options);
+        }
+        
+        // Pesan acak untuk pasangan
+        function getRandomMessage() {
+            const messages = [
+                "Terus jaga keharmonisan rumah tangga! 💑",
+                "Cinta yang kuat dibangun setiap hari. 💪",
+                "Romantisme kecil setiap hari lebih berarti daripada grand gesture. 🌹",
+                "Komunikasi adalah kunci hubungan yang bahagia. 🗝️",
+                "Selamat menikmati perjalanan rumah tangga! 🚗💨",
+                "Masih ada banyak bulan indah menanti! 🌈",
+                "Setiap bulan bersama adalah berkat. 🙏"
+            ];
+            return messages[Math.floor(Math.random() * messages.length)];
+        }
+        
+        // Set tanggal hari ini sebagai default
+        document.getElementById("currentDate").valueAsDate = new Date();
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Length Converter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Length Converter</h1>
+        <div class="converter">
+            <div class="input-group">
+                <label for="value">Value:</label>
+                <input type="number" id="value" placeholder="Enter length" step="any">
+            </div>
+            <div class="input-group">
+                <label for="from-unit">From:</label>
+                <select id="from-unit">
+                    <option value="meters">Meters</option>
+                    <option value="inches">Inches</option>
+                    <option value="feet">Feet</option>
+                    <option value="yards">Yards</option>
+                    <option value="miles">Miles</option>
+                    <option value="kilometers">Kilometers</option>
+                    <option value="centimeters">Centimeters</option>
+                    <option value="millimeters">Millimeters</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="to-unit">To:</label>
+                <select id="to-unit">
+                    <option value="inches">Inches</option>
+                    <option value="feet">Feet</option>
+                    <option value="yards">Yards</option>
+                    <option value="miles">Miles</option>
+                    <option value="meters" selected>Meters</option>
+                    <option value="kilometers">Kilometers</option>
+                    <option value="centimeters">Centimeters</option>
+                    <option value="millimeters">Millimeters</option>
+                </select>
+            </div>
+            <button id="convert-btn">Convert</button>
+            <div class="result" id="result">
+                <div class="original-value" id="original-value"></div>
+                <div class="converted-value" id="converted-value"></div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

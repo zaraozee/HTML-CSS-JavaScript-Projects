@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Gaji Karyawan</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 25px;
+        }
+        .form-section {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        h2 {
+            color: #3498db;
+            font-size: 1.2em;
+            margin-top: 0;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #555;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .result {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            display: none;
+        }
+        .result h2 {
+            color: #27ae60;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+        .salary-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        .total {
+            font-weight: bold;
+            font-size: 1.1em;
+            color: #e74c3c;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid #eee;
+        }
+        .highlight {
+            background: #e3f2fd;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Kalkulator Gaji Karyawan</h1>
+        
+        <div class="form-section">
+            <h2>Data Karyawan</h2>
+            <div class="form-group">
+                <label for="nama">Nama Karyawan:</label>
+                <input type="text" id="nama" placeholder="Masukkan nama karyawan">
+            </div>
+            <div class="form-group">
+                <label for="jabatan">Jabatan:</label>
+                <select id="jabatan">
+                    <option value="staff">Staff</option>
+                    <option value="supervisor">Supervisor</option>
+                    <option value="manager">Manager</option>
+                    <option value="director">Director</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="status">Status Pernikahan:</label>
+                <select id="status">
+                    <option value="tk">Belum Menikah (TK)</option>
+                    <option value="k0">Menikah (Tanpa Tanggungan)</option>
+                    <option value="k1">Menikah (1 Tanggungan)</option>
+                    <option value="k2">Menikah (2 Tanggungan)</option>
+                    <option value="k3">Menikah (3 Tanggungan)</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="form-section">
+            <h2>Komponen Gaji</h2>
+            <div class="form-group">
+                <label for="gajiPokok">Gaji Pokok (Rp):</label>
+                <input type="number" id="gajiPokok" min="0" value="5000000">
+            </div>
+            <div class="form-group">
+                <label for="tunjanganJabatan">Tunjangan Jabatan (Rp):</label>
+                <input type="number" id="tunjanganJabatan" min="0" value="0">
+            </div>
+            <div class="form-group">
+                <label for="tunjanganKinerja">Tunjangan Kinerja (Rp):</label>
+                <input type="number" id="tunjanganKinerja" min="0" value="0">
+            </div>
+            <div class="form-group">
+                <label for="tunjanganLain">Tunjangan Lainnya (Rp):</label>
+                <input type="number" id="tunjanganLain" min="0" value="0">
+            </div>
+        </div>
+        
+        <div class="form-section">
+            <h2>Potongan</h2>
+            <div class="form-group">
+                <label for="bpjsKesehatan">BPJS Kesehatan (Rp):</label>
+                <input type="number" id="bpjsKesehatan" min="0" value="0">
+            </div>
+            <div class="form-group">
+                <label for="bpjsKetenagakerjaan">BPJS Ketenagakerjaan (Rp):</label>
+                <input type="number" id="bpjsKetenagakerjaan" min="0" value="0">
+            </div>
+            <div class="form-group">
+                <label for="potonganLain">Potongan Lainnya (Rp):</label>
+                <input type="number" id="potonganLain" min="0" value="0">
+            </div>
+        </div>
+        
+        <button onclick="hitungGaji()">Hitung Gaji</button>
+        
+        <div class="result" id="hasil">
+            <h2>Slip Gaji</h2>
+            <div id="namaKaryawan" style="font-weight: bold; font-size: 1.2em; margin-bottom: 10px;"></div>
+            <div id="infoJabatan" style="margin-bottom: 15px; color: #555;"></div>
+            
+            <div class="salary-details">
+                <div class="detail-item highlight">
+                    <span>Gaji Pokok</span>
+                    <span id="detailGajiPokok">Rp0</span>
+                </div>
+                <div class="detail-item">
+                    <span>Tunjangan Jabatan</span>
+                    <span id="detailTunjanganJabatan">Rp0</span>
+                </div>
+                <div class="detail-item">
+                    <span>Tunjangan Kinerja</span>
+                    <span id="detailTunjanganKinerja">Rp0</span>
+                </div>
+                <div class="detail-item">
+                    <span>Tunjangan Lainnya</span>
+                    <span id="detailTunjanganLain">Rp0</span>
+                </div>
+                <div class="detail-item highlight">
+                    <span>Total Penghasilan</span>
+                    <span id="detailTotalPenghasilan">Rp0</span>
+                </div>
+                <div class="detail-item">
+                    <span>BPJS Kesehatan</span>
+                    <span id="detailBpjsKesehatan">Rp0</span>
+                </div>
+                <div class="detail-item">
+                    <span>BPJS Ketenagakerjaan</span>
+                    <span id="detailBpjsKetenagakerjaan">Rp0</span>
+                </div>
+                <div class="detail-item">
+                    <span>Potongan Lainnya</span>
+                    <span id="detailPotonganLain">Rp0</span>
+                </div>
+                <div class="detail-item highlight">
+                    <span>Total Potongan</span>
+                    <span id="detailTotalPotongan">Rp0</span>
+                </div>
+                <div class="detail-item">
+                    <span>PPH 21</span>
+                    <span id="detailPph21">Rp0</span>
+                </div>
+            </div>
+            
+            <div class="total">
+                <span>Gaji Bersih</span>
+                <span id="detailGajiBersih">Rp0</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function hitungGaji() {
+            // Ambil data karyawan
+            const nama = document.getElementById("nama").value || "Karyawan";
+            const jabatan = document.getElementById("jabatan").value;
+            const status = document.getElementById("status").value;
+            
+            // Ambil komponen gaji
+            const gajiPokok = parseFloat(document.getElementById("gajiPokok").value) || 0;
+            const tunjanganJabatan = parseFloat(document.getElementById("tunjanganJabatan").value) || 0;
+            const tunjanganKinerja = parseFloat(document.getElementById("tunjanganKinerja").value) || 0;
+            const tunjanganLain = parseFloat(document.getElementById("tunjanganLain").value) || 0;
+            
+            // Ambil potongan
+            const bpjsKesehatan = parseFloat(document.getElementById("bpjsKesehatan").value) || 0;
+            const bpjsKetenagakerjaan = parseFloat(document.getElementById("bpjsKetenagakerjaan").value) || 0;
+            const potonganLain = parseFloat(document.getElementById("potonganLain").value) || 0;
+            
+            // Hitung total penghasilan
+            const totalPenghasilan = gajiPokok + tunjanganJabatan + tunjanganKinerja + tunjanganLain;
+            
+            // Hitung total potongan
+            const totalPotongan = bpjsKesehatan + bpjsKetenagakerjaan + potonganLain;
+            
+            // Hitung PPH 21 (sederhana)
+            const pph21 = hitungPPH21(totalPenghasilan, status);
+            
+            // Hitung gaji bersih
+            const gajiBersih = totalPenghasilan - totalPotongan - pph21;
+            
+            // Tampilkan hasil
+            document.getElementById("namaKaryawan").textContent = nama;
+            document.getElementById("infoJabatan").textContent = `Jabatan: ${getJabatanName(jabatan)} | Status: ${getStatusName(status)}`;
+            
+            document.getElementById("detailGajiPokok").textContent = formatRupiah(gajiPokok);
+            document.getElementById("detailTunjanganJabatan").textContent = formatRupiah(tunjanganJabatan);
+            document.getElementById("detailTunjanganKinerja").textContent = formatRupiah(tunjanganKinerja);
+            document.getElementById("detailTunjanganLain").textContent = formatRupiah(tunjanganLain);
+            document.getElementById("detailTotalPenghasilan").textContent = formatRupiah(totalPenghasilan);
+            
+            document.getElementById("detailBpjsKesehatan").textContent = formatRupiah(bpjsKesehatan);
+            document.getElementById("detailBpjsKetenagakerjaan").textContent = formatRupiah(bpjsKetenagakerjaan);
+            document.getElementById("detailPotonganLain").textContent = formatRupiah(potonganLain);
+            document.getElementById("detailTotalPotongan").textContent = formatRupiah(totalPotongan);
+            
+            document.getElementById("detailPph21").textContent = formatRupiah(pph21);
+            document.getElementById("detailGajiBersih").textContent = formatRupiah(gajiBersih);
+            
+            document.getElementById("hasil").style.display = "block";
+        }
+        
+        // Fungsi menghitung PPH 21 (versi sederhana)
+        function hitungPPH21(penghasilan, status) {
+            const ptkp = getPTKP(status);
+            const pkp = Math.max(0, penghasilan * 12 - ptkp);
+            
+            if (pkp <= 0) return 0;
+            
+            let pphSetahun = 0;
+            
+            if (pkp <= 60000000) {
+                pphSetahun = pkp * 0.05;
+            } else if (pkp <= 250000000) {
+                pphSetahun = 3000000 + (pkp - 60000000) * 0.15;
+            } else if (pkp <= 500000000) {
+                pphSetahun = 34500000 + (pkp - 250000000) * 0.25;
+            } else if (pkp <= 5000000000) {
+                pphSetahun = 97000000 + (pkp - 500000000) * 0.30;
+            } else {
+                pphSetahun = 1447000000 + (pkp - 5000000000) * 0.35;
+            }
+            
+            return pphSetahun / 12;
+        }
+        
+        // Fungsi mendapatkan PTKP berdasarkan status
+        function getPTKP(status) {
+            switch(status) {
+                case "tk": return 54000000;  // TK/0
+                case "k0": return 58500000;  // K/0
+                case "k1": return 63000000;  // K/1
+                case "k2": return 67500000;  // K/2
+                case "k3": return 72000000;  // K/3
+                default: return 54000000;
+            }
+        }
+        
+        // Fungsi format rupiah
+        function formatRupiah(angka) {
+            return "Rp" + angka.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        }
+        
+        // Fungsi konversi kode jabatan ke nama
+        function getJabatanName(jabatan) {
+            const jabatanMap = {
+                "staff": "Staff",
+                "supervisor": "Supervisor",
+                "manager": "Manager",
+                "director": "Director"
+            };
+            return jabatanMap[jabatan] || "Staff";
+        }
+        
+        // Fungsi konversi kode status ke nama
+        function getStatusName(status) {
+            const statusMap = {
+                "tk": "Belum Menikah",
+                "k0": "Menikah (0 Tanggungan)",
+                "k1": "Menikah (1 Tanggungan)",
+                "k2": "Menikah (2 Tanggungan)",
+                "k3": "Menikah (3 Tanggungan)"
+            };
+            return statusMap[status] || "Belum Menikah";
+        }
+    </script>
+</body>
+</html>
