@@ -1,8 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const boxesContainer = document.getElementById('boxes');
     const container = document.querySelector('.container');
-    
-    // Create boxes
+
     function createBoxes() {
         const boxSize = window.innerWidth < 768 ? 30 : 40;
         const margin = window.innerWidth < 768 ? 5 : 10;
@@ -18,11 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
             boxesContainer.appendChild(box);
         }
     }
-    
-    // Initialize boxes
+
     createBoxes();
-    
-    // Handle mouse movement
+
     container.addEventListener('mousemove', (e) => {
         const boxes = document.querySelectorAll('.box');
         const mouseX = e.clientX;
@@ -60,13 +57,11 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
         });
     });
-    
-    // Handle window resize
+
     window.addEventListener('resize', () => {
         createBoxes();
     });
-    
-    // Reset boxes when mouse leaves
+
     container.addEventListener('mouseleave', () => {
         const boxes = document.querySelectorAll('.box');
         boxes.forEach(box => {

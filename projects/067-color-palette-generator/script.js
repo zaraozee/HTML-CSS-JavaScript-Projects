@@ -7,13 +7,11 @@ document.addEventListener('DOMContentLoaded', () => {
   generateBtn.addEventListener('click', generatePalette);
   baseColorInput.addEventListener('input', generatePalette);
 
-  // Generate color palette
   function generatePalette() {
-    const baseColor = baseColorInput.value.slice(1); // Remove '#' from hex
+    const baseColor = baseColorInput.value.slice(1); 
     const scheme = schemeSelect.value;
     let colors = [];
 
-    // Generate colors based on scheme
     switch (scheme) {
       case 'monochromatic':
         colors = generateMonochromatic(baseColor);
@@ -37,7 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
     displayPalette(colors);
   }
 
-  // Display the generated palette
   function displayPalette(colors) {
     paletteContainer.innerHTML = '';
     colors.forEach(color => {
@@ -61,7 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Color generation functions
   function generateMonochromatic(baseColor) {
     const hsl = hexToHSL(baseColor);
     const colors = [];
@@ -112,7 +108,6 @@ document.addEventListener('DOMContentLoaded', () => {
     return colors;
   }
 
-  // Color conversion helpers
   function hexToHSL(hex) {
     let r = parseInt(hex.substring(0, 2), 16) / 255;
     let g = parseInt(hex.substring(2, 4), 16) / 255;
@@ -171,6 +166,5 @@ document.addEventListener('DOMContentLoaded', () => {
     return `${toHex(r)}${toHex(g)}${toHex(b)}`;
   }
 
-  // Generate initial palette
   generatePalette();
 });
